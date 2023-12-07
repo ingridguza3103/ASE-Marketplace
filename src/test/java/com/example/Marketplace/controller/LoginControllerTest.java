@@ -49,9 +49,9 @@ public class LoginControllerTest {
     @Test
     public void testLoginPage() throws Exception {
         // mock get operation to see if index page works
-        mockMvc.perform(get(""))
+        mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"))
+                .andExpect(view().name("my-account"))
                 .andExpect(model().attributeExists("user"));
     }
 
@@ -89,7 +89,7 @@ public class LoginControllerTest {
                         .param("username", username)
                         .param("pw", wrongPw))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"))
+                .andExpect(view().name("my-account"))
                 .andExpect(model().attributeExists("loginError"));
     }
 
@@ -105,9 +105,40 @@ public class LoginControllerTest {
                 .param("username", username)
                 .param("pw", password))
         .andExpect(status().isOk())
-        .andExpect(view().name("index"))
+        .andExpect(view().name("my-account"))
         .andExpect(model().attributeExists("loginError"));
     }
 
+
+    @Test
+    public void testRegistrationSuccess() throws Exception {
+        String username = "newUser";
+        String password = "password";
+
+        // mock the repository to return false when checkUserExists so the user can be registered
+        when(userRepository.checkUserExists(username)).thenReturn(false);
+        // mock user injection
+        mockMvc.perform(post("/register")
+                        .param("username", username)
+                        .param("pw", password))
+                .andExpect(status().isOk())
+                .andExpect(view().name("registration_success"));
+    }
+
+    @Test
+    public void testRegistrationFailure() throws Exception {
+        String username = "newUser";
+        String password = "password";
+
+        // mock the repository to return true to simulate user already existing
+        when(userRepository.checkUserExists(username)).thenReturn(true);
+        // mock user injection
+        mockMvc.perform(post("/register")
+                        .param("username", username)
+                        .param("pw", password))
+                .andExpect(status().isOk())
+                .andExpect(view().name("my-account"))
+                .andExpect(model().attributeExists("loginError"));
+    }
 
 }

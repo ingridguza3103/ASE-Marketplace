@@ -28,10 +28,10 @@ public class LoginController {
      * @param model the model
      * @return index.html
      */
-    @GetMapping("")
+    @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("user", new User());
-        return "index";
+        return "my-account";
     }
 
     /**
@@ -45,14 +45,16 @@ public class LoginController {
         // Simple placeholder for now
         // Implement authentication logic here
         // TODO: check if user exists
-        if (userRepository.checkUserExists(user.getUsername())) {
+        System.out.println("Username check: " + user.getUsername().split(",")[0]);
+        System.out.println("Pw check: " + user.getPw());
+        if (userRepository.checkUserExists(user.getUsername().split(",")[0])) {
 
             System.out.println("USER EXISTS");
             // retrieve user from userRepo
-            User loginUser = userRepository.findByUserName(user.getUsername());
+            User loginUser = userRepository.findByUserName(user.getUsername().split(",")[0]);
 
             // authenticate user
-            if (passwordEncoder.matches(user.getPw(), loginUser.getPw())) { // pw correct
+            if (passwordEncoder.matches(user.getPw().split(",")[0], loginUser.getPw())) { // pw correct
                 System.out.println("PW Correct");
                 // TODO: if input correct route to homepage
                 return "login_success";
@@ -60,7 +62,7 @@ public class LoginController {
                 System.out.println("PW Incorrect");
                 // TODO: print username or password incorrect if incorrect input
                 model.addAttribute("loginError", "Username or password incorrect!");
-                return "index";
+                return "my-account";
             }
 
 
@@ -69,10 +71,34 @@ public class LoginController {
             // TODO: PRINT user does not exist
             System.out.println("USER NOT EXISTING");
             model.addAttribute("loginError", "User does not exist");
-            return "index";
+            return "my-account";
 
         }
 
+
+
+    }
+
+
+
+    @PostMapping("/register")
+    public String registerUser(User user, Model model) {
+        // check if user already exists and only save if not
+        if (user.getUsername().contains(",") && user.getUsername().contains(",")) {
+            user.setUsername(user.getUsername().split(",")[1]);
+            user.setPw(user.getPw().split(",")[1]);
+        }
+        if (!userRepository.checkUserExists(user.getUsername())) {
+            String encodedPassword = passwordEncoder.encode(user.getPw());
+            System.out.println("Insert user " + user.getUsername() + " with pw " + user.getPw());
+            user.setPw(encodedPassword);
+            userRepository.saveAndFlush(user);
+            return "registration_success";
+        } else {
+            // TODO: Print username already exists to the model
+            model.addAttribute("loginError", "Username already exists");
+            return "my-account"; // Return to registration form with error message
+        }
 
 
     }
