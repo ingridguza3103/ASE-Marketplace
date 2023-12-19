@@ -3,6 +3,7 @@ package com.example.Marketplace.controller;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
+import com.example.Marketplace.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class LoginController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private TokenService tokenService;
 
     /**
      * GET request handler for login loads the login form
@@ -56,6 +60,12 @@ public class LoginController {
             // authenticate user
             if (passwordEncoder.matches(user.getPw().split(",")[0], loginUser.getPw())) { // pw correct
                 System.out.println("PW Correct");
+
+                // generate JWT token
+                String userToken = tokenService.generateToken(loginUser);
+                // Add the token to the response
+                model.addAttribute(userToken);
+
                 // TODO: if input correct route to homepage
                 return "login_success";
             } else { // pw incorrect
