@@ -64,7 +64,7 @@ public class LoginController {
                 // generate JWT token
                 String userToken = tokenService.generateToken(loginUser);
                 // Add the token to the response
-                model.addAttribute(userToken);
+                //model.addAttribute(userToken);
 
                 // TODO: if input correct route to homepage
                 return "login_success";
