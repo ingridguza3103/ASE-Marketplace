@@ -767,10 +767,10 @@
                             <div class="ps-form__content">
                                 <h5>Log In To Your Account</h5>
                                 <div class="form-group">
-                                    <input class="form-control" th:field="*{username}" type="text" placeholder="Username">
+                                    <input class="form-control" th:field="*{username}" type="text" required placeholder="Username">
                                 </div>
                                 <div class="form-group form-forgot">
-                                    <input class="form-control" type="password" th:field="*{pw}" placeholder="Password"><a href="#">Forgot?</a>
+                                    <input class="form-control" type="password" th:field="*{pw}" required placeholder="Password"><a href="#">Forgot?</a>
                                 </div>
                                 <div class="form-group">
                                     <div class="ps-checkbox">
@@ -791,10 +791,10 @@
                             <div class="ps-form__content">
                                 <h5>Create A New Account</h5>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" th:field="*{username}" placeholder="Username">
+                                    <input class="form-control" type="text" th:field="*{username}"  placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="password" th:field="*{pw}" placeholder="Password">
+                                    <input class="form-control" type="password" th:field="*{pw}"  placeholder="Password" required>
                                 </div>
                                 <div class="form-group submtit">
                                     <button type="button" onclick="submitForm('/register')" class="ps-btn ps-btn--fullwidth">Register</button>
