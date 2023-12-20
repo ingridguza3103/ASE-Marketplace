@@ -4,7 +4,10 @@ import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
 import com.example.Marketplace.service.TokenService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +41,11 @@ public class LoginController {
         return "my-account";
     }
 
+    @GetMapping("/login_success")
+    public String showLoginSuccessPage() {
+        return "login_success"; // Thymeleaf will resolve this to "templates/login_success.html"
+    }
+
     /**
      * This method handles all POST requests and performs user authentication
      * @param user the User object created from username and password from the login form
@@ -45,7 +53,7 @@ public class LoginController {
      * @return index.html if login failed, login_success.html if login succeeded
      */
     @PostMapping("/login")
-    public String login(@ModelAttribute  User user, Model model) {
+    public ResponseEntity<String> login(@ModelAttribute  User user, Model model, HttpServletResponse response) {
         // Simple placeholder for now
         // Implement authentication logic here
         // TODO: check if user exists
@@ -63,16 +71,22 @@ public class LoginController {
 
                 // generate JWT token
                 String userToken = tokenService.generateToken(loginUser);
+                // create http header and add token
+                HttpHeaders header = new HttpHeaders();
+                header.add("Authorization", "Bearer " + userToken);
+                // Include the Location header for redirection
+                response.addHeader("Location", "/login_success");
                 // Add the token to the response
                 //model.addAttribute(userToken);
 
                 // TODO: if input correct route to homepage
-                return "login_success";
+                System.out.println(userToken);
+                return ResponseEntity.ok().headers(header).body("login_success");
             } else { // pw incorrect
                 System.out.println("PW Incorrect");
                 // TODO: print username or password incorrect if incorrect input
                 model.addAttribute("loginError", "Username or password incorrect!");
-                return "my-account";
+                return ResponseEntity.badRequest().body("my-account");
             }
 
 
@@ -81,7 +95,7 @@ public class LoginController {
             // TODO: PRINT user does not exist
             System.out.println("USER NOT EXISTING");
             model.addAttribute("loginError", "User does not exist");
-            return "my-account";
+            return ResponseEntity.badRequest().body("my-account");
 
         }
 
@@ -90,6 +104,10 @@ public class LoginController {
     }
 
 
+    @GetMapping("/registration_success")
+    public String showRegisterSuccessPage() {
+        return "registration_success"; // Thymeleaf will resolve this to "templates/login_success.html"
+    }
 
     @PostMapping("/register")
     public String registerUser(User user, Model model) {

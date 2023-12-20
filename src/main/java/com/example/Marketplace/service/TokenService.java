@@ -1,28 +1,32 @@
 package com.example.Marketplace.service;
 
 import com.example.Marketplace.model.User;
-import io.jsonwebtoken.Claims;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+
 
 @Service
 public class TokenService {
-    private static final String SECRET_KEY = "secret";
+    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);;
 
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
+        // print key just for verification purpose on jwt.io
+        System.out.println("JWT KEY: " + io.jsonwebtoken.io.Encoders.BASE64.encode(SECRET_KEY.getEncoded()));
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000*3600*12)) //set expiration time of token to 12 hours
-                .signWith(SignatureAlgorithm.ES256, SECRET_KEY)
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
 

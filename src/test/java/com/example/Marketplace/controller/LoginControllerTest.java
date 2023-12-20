@@ -15,8 +15,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -70,11 +73,21 @@ public class LoginControllerTest {
         // mock password input correct
         when(passwordEncoder.matches(correctPw, mockUser.getPw())).thenReturn(true);
         // mock post request to login page and simulate correct user login
-        mockMvc.perform(post("/login")
+        MvcResult result = mockMvc.perform(post("/login")
                         .param("username", username)
                         .param("pw", correctPw))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login_success"));
+                //.andExpect(view().name("login_success"));
+                .andReturn();
+
+        String token = result.getResponse().getHeader("Authorization");
+        String response = result.getResponse().getContentAsString();
+
+        // TODO: refactor to custom assertion
+        assertNotNull(token, "Token check");
+        assertEquals("login_success", response, "Response message check");
+
+
     }
 
     @Test
@@ -89,12 +102,18 @@ public class LoginControllerTest {
         // mock password input incorrect
         when(passwordEncoder.matches(wrongPw, mockUser.getPw())).thenReturn(false);
         // mock post request to login page to simulate incorrect login
-        mockMvc.perform(post("/login")
+        MvcResult result = mockMvc.perform(post("/login")
                         .param("username", username)
                         .param("pw", wrongPw))
-                .andExpect(status().isOk())
-                .andExpect(view().name("my-account"))
-                .andExpect(model().attributeExists("loginError"));
+                .andExpect(status().isBadRequest())
+                //.andExpect(view().name("my-account"))
+                //.andExpect(model().attributeExists("loginError"))
+                .andReturn();
+
+        String response = result.getResponse().getContentAsString();
+
+        assertEquals("my-account", response, "Response message check");
+
     }
 
     @Test
@@ -105,12 +124,17 @@ public class LoginControllerTest {
         // mock userRepository to return false for checkUserExists simulating user not in db
         when(userRepository.checkUserExists(username)).thenReturn(false);
         // mock post request to login page and simulate user login with non-existing username
-        mockMvc.perform(post("/login")
+       MvcResult result = mockMvc.perform(post("/login")
                 .param("username", username)
                 .param("pw", password))
-        .andExpect(status().isOk())
-        .andExpect(view().name("my-account"))
-        .andExpect(model().attributeExists("loginError"));
+        .andExpect(status().isBadRequest())
+        //.andExpect(view().name("my-account"))
+        //.andExpect(model().attributeExists("loginError"))
+        .andReturn();
+
+        String response = result.getResponse().getContentAsString();
+
+        assertEquals("my-account", response, "Response message check");
     }
 
 

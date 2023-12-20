@@ -813,10 +813,29 @@
         		    form.action = action;
 			        console.log("form submitted with action: " + form.action);
 
-        		    // Set any additional parameters if needed
+                    var formData = new FormData(form);
+                    fetch(action, {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.text();  // Assuming the server sends a plain text response
+                            })
+                            .then(data => {
+                                console.log('Server response:', data);
 
-        		    // Submit the form
-        		    form.submit();
+                                if (data === 'login_success') {
+                                    window.location.href = 'login_success';  // Redirect to success page
+                                } else {
+                                    alert('Username or Password incorrect. Please try again.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
     			}
                 </script>
             </div>
