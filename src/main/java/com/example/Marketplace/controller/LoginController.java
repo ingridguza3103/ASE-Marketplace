@@ -4,6 +4,7 @@ import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
 import com.example.Marketplace.service.TokenService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -78,6 +79,12 @@ public class LoginController {
                 response.addHeader("Location", "/login_success");
                 // Add the token to the response
                 //model.addAttribute(userToken);
+
+                // Set cookie
+                Cookie cookie = new Cookie("token", userToken);
+                cookie.setPath("/");
+                cookie.setHttpOnly(true);
+                response.addCookie(cookie);
 
                 // TODO: if input correct route to homepage
                 System.out.println(userToken);
