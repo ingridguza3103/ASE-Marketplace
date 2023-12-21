@@ -33,17 +33,17 @@ public class UserService {
      * @return true if login success, return false if login failed
      */
     public boolean loginUser(User user) {
-        System.out.println("Username check: " + user.getUsername().split(",")[0]);
+        System.out.println("Username check: " + user.getUsername());
         System.out.println("Pw check: " + user.getPw());
 
-        if (userRepository.checkUserExists(user.getUsername().split(",")[0])) { // if user exists in db
+        if (userRepository.checkUserExists(user.getUsername())) { // if user exists in db
 
             System.out.println("USER EXISTS");
             // retrieve user from userRepo
-            User loginUser = userRepository.findByUserName(user.getUsername().split(",")[0]);
+            User loginUser = userRepository.findByUserName(user.getUsername());
 
             // authenticate user
-            if (passwordEncoder.matches(user.getPw().split(",")[0], loginUser.getPw())) { // pw correct
+            if (passwordEncoder.matches(user.getPw(), loginUser.getPw())) { // pw correct
                 System.out.println("PW Correct");
                 return true;
 

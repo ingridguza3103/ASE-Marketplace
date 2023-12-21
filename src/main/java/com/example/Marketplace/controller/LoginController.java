@@ -26,11 +26,6 @@ public class LoginController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private TokenService tokenService;
 
     @Autowired
     private UserService userService;
@@ -59,13 +54,17 @@ public class LoginController {
      */
     @PostMapping("/login")
     public ResponseEntity<String> login(@ModelAttribute  User user, Model model, HttpServletResponse response) {
+        if (user.getUsername().contains(",") && user.getPw().contains(",")) {
+            user.setUsername(user.getUsername().split(",")[0]);
+            user.setPw(user.getPw().split(",")[0]);
+        }
+
         // Implement authentication logic here
         boolean isLoggedIn = userService.loginUser(user);
 
         if (isLoggedIn) {
-            User loginUser = userRepository.findByUserName(user.getUsername().split(",")[0]);
             // generate Token and add it in cookie to response
-            return userService.createTokenAndCookie(loginUser, response, "login_success");
+            return userService.createTokenAndCookie(user, response, "login_success");
         } else {
             return ResponseEntity.status(401).body("login_failed");
         }
@@ -81,7 +80,7 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response) {
         // check if user already exists and only save if not
-        if (user.getUsername().contains(",") && user.getUsername().contains(",")) {
+        if (user.getUsername().contains(",") && user.getPw().contains(",")) {
             user.setUsername(user.getUsername().split(",")[1]);
             user.setPw(user.getPw().split(",")[1]);
         }
