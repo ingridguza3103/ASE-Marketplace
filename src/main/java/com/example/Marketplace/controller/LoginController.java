@@ -93,7 +93,7 @@ public class LoginController {
                 System.out.println("PW Incorrect");
                 // TODO: print username or password incorrect if incorrect input
                 model.addAttribute("loginError", "Username or password incorrect!");
-                return ResponseEntity.badRequest().body("my-account");
+                return ResponseEntity.status(401).body("login_failed");
             }
 
 
@@ -102,7 +102,7 @@ public class LoginController {
             // TODO: PRINT user does not exist
             System.out.println("USER NOT EXISTING");
             model.addAttribute("loginError", "User does not exist");
-            return ResponseEntity.badRequest().body("my-account");
+            return ResponseEntity.status(401).body("login_failed");
 
         }
 
@@ -117,7 +117,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String registerUser(User user, Model model) {
+    public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response) {
         // check if user already exists and only save if not
         if (user.getUsername().contains(",") && user.getUsername().contains(",")) {
             user.setUsername(user.getUsername().split(",")[1]);
@@ -128,11 +128,30 @@ public class LoginController {
             System.out.println("Insert user " + user.getUsername() + " with pw " + user.getPw());
             user.setPw(encodedPassword);
             userRepository.saveAndFlush(user);
-            return "registration_success";
+
+            // TODO: refactor
+            // generate JWT token and store it in a cookie
+            String userToken = tokenService.generateToken(user);
+
+            HttpHeaders header = new HttpHeaders();
+            header.add("Authorization", "Bearer " + userToken);
+            // Include the Location header for redirection
+            response.addHeader("Location", "/registration_success");
+            // Add the token to the response
+            //model.addAttribute(userToken);
+
+            // Set cookie
+            Cookie cookie = new Cookie("token", userToken);
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
+
+
+            return ResponseEntity.ok().headers(header).body("registration_success");
         } else {
             // TODO: Print username already exists to the model
             model.addAttribute("loginError", "Username already exists");
-            return "my-account"; // Return to registration form with error message
+            return ResponseEntity.status(401).body("registration_failed"); // Return to registration form with error message
         }
 
 

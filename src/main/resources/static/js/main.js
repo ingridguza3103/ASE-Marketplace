@@ -42,16 +42,16 @@
             body: formData
         })
             .then(response => {
-                if (!response.ok) {
+               /* if (!response.ok) {
                     throw new Error('Network response was not ok');
-                }
+                } */
                 // Return both the response and the promise for response.text()
                 return response.text().then(data => ({ response, data }));
             })
             .then(({ response, data }) => {
                 console.log('Server response:', data);
 
-                if (data.trim() === 'login_success') {
+                if (response.ok && (data.trim() === 'login_success' || data.trim() === 'registration_success')) {
                     // Fetch the token from headers
                     const tokenHeader = response.headers.get('Authorization');
                     const token = tokenHeader ? tokenHeader.split(' ')[1] : null;
@@ -62,9 +62,55 @@
                     //document.cookie = `token=${token}; path=/; secure; HttpOnly`;
 
                     //console.log("Current cookies: " + document.cookie);
-                    window.location.href = 'login_success';  // Redirect to success page
+                    window.location.href = data.trim()
+                    ;  // Redirect to success page
                 } else {
-                    alert('Username or Password incorrect. Please try again.');
+
+                    if (data.trim() === 'registration_failed') {
+
+                        var userNameInput = document.getElementById('registerUsername');
+                        userNameInput.style.borderColor = 'red';
+
+
+                        userNameInput.onfocus = function () {
+                            pwInput.style.borderColor = 'red';
+                            userNameInput.style.borderColor = '#ffc107';
+                        }
+
+                        var pwInput = document.getElementById('registerPw');
+                        pwInput.style.borderColor = 'red';
+
+                        pwInput.onfocus = function () {
+                            userNameInput.style.borderColor = 'red';
+                            pwInput.style.borderColor = '#ffc107';
+                        }
+
+                        var registerError = document.getElementById('registerError');
+                        registerError.style.display = 'block';
+
+
+                    } else if (data.trim() === 'login_failed') {
+
+                        var loginUserInput = document.getElementById('loginUsername');
+                        loginUserInput.style.borderColor = 'red';
+
+                        loginUserInput.onfocus = function () {
+                            loginPwInput.style.borderColor = 'red';
+                            loginUserInput.style.borderColor = '#ffc107';
+                        }
+
+                        var loginPwInput = document.getElementById('loginPw');
+                        loginPwInput.style.borderColor = 'red';
+
+                        loginPwInput.onfocus = function () {
+                            loginUserInput.style.borderColor = 'red'
+                            loginPwInput.style.borderColor = '#ffc107';
+                        }
+
+                        var loginError = document.getElementById('loginError');
+                        loginError.style.display = 'block';
+                    }
+
                 }
             })
             .catch(error => {
