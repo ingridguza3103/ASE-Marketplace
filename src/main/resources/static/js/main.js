@@ -29,6 +29,51 @@
         },
     };
 
+    function submitForm(action) {
+        // Change the form method dynamically based on the button clicked
+        var form = document.getElementById('loginform');
+        form.action = action;
+        console.log("form submitted with action: " + form.action);
+
+        var formData = new FormData(form);
+
+        fetch(action, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Return both the response and the promise for response.text()
+                return response.text().then(data => ({ response, data }));
+            })
+            .then(({ response, data }) => {
+                console.log('Server response:', data);
+
+                if (data.trim() === 'login_success') {
+                    // Fetch the token from headers
+                    const tokenHeader = response.headers.get('Authorization');
+                    const token = tokenHeader ? tokenHeader.split(' ')[1] : null;
+
+                    // Continue with your code...
+                    // Store token in cookie or handle it as needed
+                    console.log("token:" + token);
+                    //document.cookie = `token=${token}; path=/; secure; HttpOnly`;
+
+                    //console.log("Current cookies: " + document.cookie);
+                    window.location.href = 'login_success';  // Redirect to success page
+                } else {
+                    alert('Username or Password incorrect. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    window.submitForm = submitForm;
+
     function parallax() {
         $('.bg--parallax').each(function() {
             var el = $(this),

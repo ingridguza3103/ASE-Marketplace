@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
+
           <link rel="icon" type="image/x-icon" th:href="@{img/reuse-fav.png}">
 
     <meta charset="utf-8">
@@ -806,7 +807,7 @@
                         </div>
                     </div>
                 </form>
-		        <script>
+		        <!--<script>
     			    function submitForm(action) {
         		    // Change the form method dynamically based on the button clicked
                         var form = document.getElementById('loginform');
@@ -849,7 +850,7 @@
                                 console.error('Error:', error);
                             });
     			}
-                </script>
+                </script> !-->
             </div>
         </div>
     </div>
@@ -1274,7 +1275,8 @@
     <script th:src="@{/plugins/select2/dist/js/select2.full.min.js}"></script>
     <script th:src="@{/plugins/gmap3.min.js}"></script>
     <!-- custom scripts-->
-    <script th:src="@{/js/main.js}"></script>
+   <script th:src="@{/js/main.js}"></script>
+
 </body>
 
 
