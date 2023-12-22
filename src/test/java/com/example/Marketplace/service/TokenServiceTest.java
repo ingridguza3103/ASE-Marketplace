@@ -1,7 +1,7 @@
 package com.example.Marketplace.service;
 
 import com.example.Marketplace.model.User;
-import org.h2.command.Token;
+import com.example.Marketplace.service.impl.TokenServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class TokenServiceTest {
     private User mockUser;
 
     @InjectMocks
-    private TokenService tokenService;
+    private TokenServiceImpl tokenService;
 
     @BeforeEach
     void setUp() {

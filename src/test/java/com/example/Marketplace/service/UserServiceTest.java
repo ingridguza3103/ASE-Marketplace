@@ -3,6 +3,8 @@ package com.example.Marketplace.service;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
+import com.example.Marketplace.service.impl.TokenServiceImpl;
+import com.example.Marketplace.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,9 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -34,10 +33,10 @@ public class UserServiceTest {
     private PasswordEncoder passwordEncoder;
 
     @Mock
-    private TokenService tokenService;
+    private TokenServiceImpl tokenService;
 
     @InjectMocks
-    private UserService userService;
+    private UserServiceImpl userService;
 
     private User mockUser;
 

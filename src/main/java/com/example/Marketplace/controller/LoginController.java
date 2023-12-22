@@ -3,14 +3,10 @@ package com.example.Marketplace.controller;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
-import com.example.Marketplace.service.TokenService;
-import com.example.Marketplace.service.UserService;
-import jakarta.servlet.http.Cookie;
+import com.example.Marketplace.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +24,7 @@ public class LoginController {
 
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     /**
      * GET request handler for login loads the login form
