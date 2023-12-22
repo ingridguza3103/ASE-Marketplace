@@ -3,7 +3,6 @@ package com.example.Marketplace.service;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
-import com.example.Marketplace.service.impl.TokenServiceImpl;
 import com.example.Marketplace.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
@@ -33,7 +32,7 @@ public class UserServiceTest {
     private PasswordEncoder passwordEncoder;
 
     @Mock
-    private TokenServiceImpl tokenService;
+    private TokenService tokenService;
 
     @InjectMocks
     private UserServiceImpl userService;

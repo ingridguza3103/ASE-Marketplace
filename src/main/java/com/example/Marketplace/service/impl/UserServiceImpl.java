@@ -2,6 +2,7 @@ package com.example.Marketplace.service.impl;
 
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
+import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private TokenServiceImpl tokenService;
+    private TokenService tokenService;
 
 
     public UserServiceImpl(){}

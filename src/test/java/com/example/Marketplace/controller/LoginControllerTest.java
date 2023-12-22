@@ -4,8 +4,8 @@ package com.example.Marketplace.controller;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
-import com.example.Marketplace.service.impl.TokenServiceImpl;
-import com.example.Marketplace.service.impl.UserServiceImpl;
+import com.example.Marketplace.service.TokenService;
+import com.example.Marketplace.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,10 +43,10 @@ public class LoginControllerTest {
     private PasswordEncoder passwordEncoder;
 
     @MockBean
-    private TokenServiceImpl tokenService;
+    private TokenService tokenService;
 
     @MockBean
-    private UserServiceImpl userService;
+    private UserService userService;
 
     private User mockUser;
 

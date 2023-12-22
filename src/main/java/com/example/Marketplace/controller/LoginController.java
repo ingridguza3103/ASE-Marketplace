@@ -3,7 +3,7 @@ package com.example.Marketplace.controller;
 import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
-import com.example.Marketplace.service.impl.UserServiceImpl;
+import com.example.Marketplace.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class LoginController {
 
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     /**
      * GET request handler for login loads the login form

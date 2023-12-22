@@ -38,6 +38,7 @@ public class TokenServiceImpl implements TokenService {
         return (username.equals(user.getUsername()) && !isExpired(token));
     }
 
+
     private String getUsernameFromToken(String token) {
         // parse subject from token
         return Jwts.parser()
