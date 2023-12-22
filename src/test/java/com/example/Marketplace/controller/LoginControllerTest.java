@@ -72,6 +72,21 @@ public class LoginControllerTest {
     }
 
     @Test
+    public void testLoginSuccessPage() throws Exception {
+        // mock get operation to see if index page works
+        mockMvc.perform(get("/login_success"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("login_success"));
+    }
+    @Test
+    public void testRegistrationSuccessPage() throws Exception {
+        // mock get operation to see if index page works
+        mockMvc.perform(get("/registration_success"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("registration_success"));
+    }
+
+    @Test
     public void testSuccessfulLogin() throws Exception {
         String username = "mockUser";
         String correctPw = "mockPassword";
