@@ -37,4 +37,12 @@ public class ProductServiceImpl implements ProductService {
         }
         return false;
     }
+
+    @Override
+    public void removeProduct(Product product) {
+        if (productRepository.checkProductExists(product.getId())) {
+            productRepository.delete(product);
+        }
+
+    }
 }

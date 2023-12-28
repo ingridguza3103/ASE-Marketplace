@@ -11,5 +11,7 @@ public interface ProductService {
 
     boolean uploadProduct(Product product);
 
+    void removeProduct(Product product);
+
 
 }
