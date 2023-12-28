@@ -10,14 +10,14 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String username;
-    String pw;
+    private Long id;
+    private String username;
+    private String pw;
 
     public User() {
     }
 
-    public User(int id, String username, String pw) {
+    public User(Long id, String username, String pw) {
         this.id = id;
         this.username = username;
         this.pw = pw;

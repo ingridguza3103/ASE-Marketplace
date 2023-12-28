@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * Repository class for User objects, providing methods for Querying the database
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * Method querying the users table for a given username
      * @param username the given username
