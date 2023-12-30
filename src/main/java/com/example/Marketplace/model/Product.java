@@ -15,12 +15,12 @@ public class Product {
     private double price;
     private int quantity;
     private int categoryId;
-    private int sellerId;
+    private Long sellerId;
     private String pictureUrl;
 
     public Product(){}
 
-    public Product(Long id, String productName, double price, int quantity, int categoryId, int sellerId, String pictureUrl) {
+    public Product(Long id, String productName, double price, int quantity, int categoryId, Long sellerId, String pictureUrl) {
         this.id = id;
         this.productName = productName;
         this.price = price;
@@ -80,11 +80,11 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public int getSellerId() {
+    public Long getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(int sellerId) {
+    public void setSellerId(Long sellerId) {
         this.sellerId = sellerId;
     }
 
