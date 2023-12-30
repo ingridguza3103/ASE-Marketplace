@@ -1,6 +1,11 @@
 package com.example.Marketplace.model;
 
 
+import com.example.Marketplace.service.OrderService;
+import com.example.Marketplace.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +16,14 @@ import java.util.Map;
  *
  * If the user clicks on checkout the current ShoppingCart is converted to an Order object
  */
+@Component
 public class ShoppingCart {
     private Map<Product, Integer> products = new HashMap<>();
+    // TODO: Think about having the Buyer User instance here
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    UserService userService;
 
     public ShoppingCart(){}
 
@@ -31,6 +42,7 @@ public class ShoppingCart {
     }
 
     public Order onCheckOut() {
+        // TODO: Authenticate User
         Order order = new Order();
 
         // iterate over hashmap and create OrderItem for each product and add it to the order
@@ -41,10 +53,28 @@ public class ShoppingCart {
             OrderItem orderItem = new OrderItem(order, currentProduct, currentQty);
 
             order.addProducts(orderItem);
+
+            // notify the sellers
+            notifySellers(currentProduct, currentQty);
         }
+
+        // place the order
+        orderService.placeOrder(order);
+
+
 
         return order;
 
+    }
+
+    /**
+     * This method notifies the seller of the product that a given quantity of a product has been ordered
+     * @param currentProduct the ordered product
+     * @param currentQty the ordered quantity of the product
+     */
+    private void notifySellers(Product currentProduct, int currentQty) {
+        User seller = userService.getUser(currentProduct.getSellerId());
+        // TODO: Notify seller with buyer information and product and quantity.
     }
 
 }
