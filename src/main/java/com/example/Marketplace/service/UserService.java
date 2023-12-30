@@ -2,9 +2,12 @@ package com.example.Marketplace.service;
 
 import com.example.Marketplace.model.User;
 
+import exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface UserService {
     /**
@@ -29,5 +32,9 @@ public interface UserService {
      * @return true if registration success, return false if registration failed
      */
     boolean registerUser(User user);
+
+    User getUser(Long id);
+
+    List<User> getAllUsers();
 
 }

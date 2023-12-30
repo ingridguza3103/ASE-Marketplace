@@ -4,6 +4,7 @@ import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
+import exception.ResourceNotFoundException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * This class is used to hold the functionality for the LoginController
@@ -114,5 +117,15 @@ public class UserServiceImpl implements UserService {
             System.out.println("User already exists");
             return false;
         }
+    }
+    @Override
+    public User getUser(Long id) {
+        return userRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+    }
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
