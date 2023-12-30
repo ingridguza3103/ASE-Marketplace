@@ -7,6 +7,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class Order {
     @OneToMany(mappedBy = "orderItemPK.order")
     @Valid
     private List<OrderItem> products = new ArrayList<>();
+
+    //TODO: maybe somehow get buyer user
+    private LocalDateTime orderPlaced;
 
 
     public Order(){}
@@ -57,5 +62,13 @@ public class Order {
 
     public void addProducts(OrderItem orderItem) {
         this.products.add(orderItem);
+    }
+
+    public LocalDateTime getOrderPlaced() {
+        return orderPlaced;
+    }
+
+    public void setOrderPlaced(LocalDateTime orderPlaced) {
+        this.orderPlaced = orderPlaced;
     }
 }
