@@ -1,10 +1,10 @@
 <!-- headers-->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
 <head>
-      <link rel="icon" type="image/x-icon" href="img/reuse-fav.png">
+      <link rel="icon" type="image/x-icon" th:href="@{img/reuse-fav.png}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,17 +15,17 @@
     <meta name="description" content="">
     <title>Reuse -  Isak, Selina - Lesacher Raphael - Guza, Ingrid - Halipaj, Erisa - Izadi Mehr, Seyed Mohammad Hossein Project</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/Linearicons/Linearicons/Font/demo-files/demo.css">
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="plugins/slick/slick/slick.css">
-    <link rel="stylesheet" href="plugins/nouislider/nouislider.min.css">
-    <link rel="stylesheet" href="plugins/lightGallery-master/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-    <link rel="stylesheet" href="plugins/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{fonts/Linearicons/Linearicons/Font/demo-files/demo.css}">
+    <link rel="stylesheet" th:href="@{plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/owl-carousel/assets/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/owl-carousel/assets/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/slick/slick/slick.css}">
+    <link rel="stylesheet" th:href="@{plugins/nouislider/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/lightGallery-master/dist/css/lightgallery.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css}">
+    <link rel="stylesheet" th:href="@{plugins/select2/dist/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 
 <body>
@@ -274,7 +274,7 @@
 
                             </ul>
                         </div>
-                    </div><a class="ps-logo" href="index.html"><img src="img/logo_light.png" alt="" /></a>
+                    </div><a class="ps-logo" th:="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a>
                 </div>
                 <div class="header__center">
                     <form class="ps-form--quick-search" action="https://siternet.at" method="get">
@@ -298,8 +298,8 @@
                         <div class="ps-panel--search-result">
                             <div class="ps-panel__content">
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 32GB</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 32GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -313,8 +313,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
+                                    <div class="ps-product__thumbnail"><a th:="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 64GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -328,8 +328,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 128GB</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 128GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -343,8 +343,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/2.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{th:}"><img th:src="@{th:}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{th:}">Marshall Kilburn Portable Wireless Speaker</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -358,8 +358,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/3.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{th:}"><img th:src="@{th:}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{th:}">Herschel Leather Duffle Bag In Brown Color</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -373,8 +373,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/4.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/4.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Xbox One Wireless Controller Black Color</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -388,8 +388,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/5.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/5.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Grand Slam Indoor Of Show Jumping Novel</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -403,8 +403,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/6.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/6.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Sound Intone I65 Earphone White Version</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -418,7 +418,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ps-panel__footer text-center"><a href="shop-default.html">See all results</a></div>
+                            <div class="ps-panel__footer text-center"><a th:href="@{shop-default.html}">See all results</a></div>
                         </div>
                     </form>
                 </div>
@@ -427,11 +427,11 @@
 
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-bag2"></i></div>
-                            <div class="ps-block__right"><a href="my-account.html">Cart</a><a href="my-account.html">Checkout</a></div>
+                            <div class="ps-block__right"><a th:href="@{my-account.html}">Cart</a><a th:href="@{my-account.html}">Checkout</a></div>
                         </div>
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a href="my-account.html">Login</a><a href="my-account.html">Register</a></div>
+                            <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
                         </div>
                     </div>
                 </div>
@@ -722,15 +722,15 @@
     <header class="header header--mobile" data-sticky="true">
 
         <div class="navigation--mobile">
-            <div class="navigation__left"><a class="ps-logo" href="index.html"><img src="img/logo_light.png" alt="" /></a></div>
+            <div class="navigation__left"><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
             <div class="navigation__right">
                 <div class="header__actions">
                     <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
 
                     </div>
                     <div class="ps-block--user-header">
-                        <div class="ps-block__left"><a href="my-account.html"><i class="icon-user"></i></a></div>
-                        <div class="ps-block__right"><a href="my-account.html">Login</a><a href="my-account.html">Register</a></div>
+                        <div class="ps-block__left"><a th:href="@{my-account.html}"><i class="icon-user"></i></a></div>
+                        <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
                     </div>
                 </div>
             </div>
@@ -748,7 +748,7 @@
         <div class="ps-breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a th:href="@{index.html}">Home</a></li>
                     <li>Vendor Store</li>
                 </ul>
             </div>
@@ -758,7 +758,7 @@
                 <div class="ps-section__container">
                     <div class="ps-section__left">
                         <div class="ps-block--vendor">
-                            <div class="ps-block__thumbnail"><img src="img/vendor/vendor-store.jpg" alt=""></div>
+                            <div class="ps-block__thumbnail"><img th:src="@{img/vendor/vendor-store.jpg}" alt=""></div>
                             <div class="ps-block__container">
                                 <div class="ps-block__header">
                                     <h4>Austria Shop </h4>
@@ -815,7 +815,7 @@
                             <div class="ps-section__content">
                                 <div class="owl-slider" id="vendor-bestseller" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/1.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">11%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -825,7 +825,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone X 256GB T-Mobile – Black</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -837,13 +837,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€1389.99 <del>€1893.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone X 256GB T-Mobile – Black</a>
                                                 <p class="ps-product__price sale">€1389.99 <del>€1893.00</del></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/2.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">11%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -853,7 +853,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone 7 Plus 128 GB – Red Color</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -865,13 +865,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€820.99 <del>€893.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone 7 Plus 128 GB – Red Color</a>
                                                 <p class="ps-product__price sale">€820.99 <del>€893.00</del></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>@
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/3.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">21%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -881,7 +881,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple MacBook Air Retina 13.3-Inch Laptop</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -893,13 +893,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€1020.99 <del>€1120.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple MacBook Air Retina 13.3-Inch Laptop</a>
                                                 <p class="ps-product__price sale">€1020.99 <del>€1120.00</del></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/4.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">18%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -909,7 +909,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gear VR Virtual Reality Headset</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -921,13 +921,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€64.99 <del>€80.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gear VR Virtual Reality Headset</a>
                                                 <p class="ps-product__price sale">€64.99 <del>€80.00</del></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/5.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">18%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -937,7 +937,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -949,13 +949,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€42.99 <del>€52.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
                                                 <p class="ps-product__price sale">€42.99 <del>€52.00</del></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/6.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">17%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -965,7 +965,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -977,13 +977,13 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/7.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">17%</div>
                                             <ul class="ps-product__actions">
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -993,7 +993,7 @@
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1005,7 +1005,7 @@
                                                 </div>
                                                 <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                             </div>
                                         </div>
@@ -1038,7 +1038,7 @@
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/1.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">11%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1048,7 +1048,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone X 256GB T-Mobile – Black</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1060,7 +1060,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€1389.99 <del>€1893.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone X 256GB T-Mobile – Black</a>
                                                         <p class="ps-product__price sale">€1389.99 <del>€1893.00</del></p>
                                                     </div>
                                                 </div>
@@ -1068,7 +1068,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/2.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">11%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1078,7 +1078,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone 7 Plus 128 GB – Red Color</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1090,7 +1090,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€820.99 <del>€893.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone 7 Plus 128 GB – Red Color</a>
                                                         <p class="ps-product__price sale">€820.99 <del>€893.00</del></p>
                                                     </div>
                                                 </div>
@@ -1098,7 +1098,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/3.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">21%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1108,7 +1108,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple MacBook Air Retina 13.3-Inch Laptop</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1120,7 +1120,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€1020.99 <del>€1120.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Apple MacBook Air Retina 13.3-Inch Laptop</a>
                                                         <p class="ps-product__price sale">€1020.99 <del>€1120.00</del></p>
                                                     </div>
                                                 </div>
@@ -1128,7 +1128,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/4.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">18%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1138,7 +1138,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gear VR Virtual Reality Headset</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1150,7 +1150,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€64.99 <del>€80.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gear VR Virtual Reality Headset</a>
                                                         <p class="ps-product__price sale">€64.99 <del>€80.00</del></p>
                                                     </div>
                                                 </div>
@@ -1158,7 +1158,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/5.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">18%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1168,7 +1168,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1180,7 +1180,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€42.99 <del>€52.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
                                                         <p class="ps-product__price sale">€42.99 <del>€52.00</del></p>
                                                     </div>
                                                 </div>
@@ -1188,7 +1188,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/6.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">17%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1198,7 +1198,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1210,7 +1210,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                         <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                                     </div>
                                                 </div>
@@ -1218,7 +1218,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                             <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt="" /></a>
+                                                <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/7.jpg}" alt="" /></a>
                                                     <div class="ps-product__badge">17%</div>
                                                     <ul class="ps-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-bag2"></i></a></li>
@@ -1228,7 +1228,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                         <div class="ps-product__rating">
                                                             <select class="ps-rating" data-read-only="true">
                                                                 <option value="1">1</option>
@@ -1240,7 +1240,7 @@
                                                         </div>
                                                         <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                         <p class="ps-product__price sale">€542.99 <del>€592.00</del></p>
                                                     </div>
                                                 </div>
@@ -1258,11 +1258,11 @@
                                 </div>
                                 <div class="ps-tab" id="tab-2">
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/1.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">11%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone X 256GB T-Mobile – Black</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1291,11 +1291,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/2.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">11%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone 7 Plus 128 GB – Red Color</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1324,11 +1324,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/3.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">21%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple MacBook Air Retina 13.3-Inch Laptop</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1357,11 +1357,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/4.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">18%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gear VR Virtual Reality Headset</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1390,11 +1390,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/5.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">18%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1423,11 +1423,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/6.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">17%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1456,11 +1456,11 @@
                                         </div>
                                     </div>
                                     <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt="" /></a>
+                                        <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/technology/7.jpg}" alt="" /></a>
                                             <div class="ps-product__badge">17%</div>
                                         </div>
                                         <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
+                                            <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -1526,36 +1526,36 @@
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Quick links</h4>
                     <ul class="ps-list--link">
-                        <li><a href="policy.html">Policy</a></li>
-                        <li><a href="term-condition.html">Term & Condition</a></li>
-                        <li><a href="shipping.html">Shipping</a></li>
-                        <li><a href="return.html">Return</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a th:href="@{policy.html}">Policy</a></li>
+                        <li><a th:href="@{term-condition.html}">Term & Condition</a></li>
+                        <li><a th:href="@{shipping.html}">Shipping</a></li>
+                        <li><a th:href="@{return.html}">Return</a></li>
+                        <li><a th:href="@{faqs.html}">FAQs</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Company</h4>
                     <ul class="ps-list--link">
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="affilate.html">Affilate</a></li>
-                        <li><a href="shipping.html">Career</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a th:href="@{about-us.html}">About Us</a></li>
+                        <li><a th:href="@{affilate.html}">Affilate</a></li>
+                        <li><a th:href="@{shipping.html}">Career</a></li>
+                        <li><a th:href="@{contact.html}">Contact</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Bussiness</h4>
                     <ul class="ps-list--link">
-                        <li><a href="our-press.html">Our Press</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="my-account.html">My account</a></li>
-                        <li><a href="shop.html">Shop</a></li>
+                        <li><a th:href="@{our-press.html}">Our Press</a></li>
+                        <li><a th:href="@{checkout.html}">Checkout</a></li>
+                        <li><a th:href="@{my-account.html}">My account</a></li>
+                        <li><a th:href="@{shop.html}">Shop</a></li>
                     </ul>
                 </aside>
             </div>
 
             <div class="ps-footer__copyright">
                 <p>&copy; 2023 - 2024 Reuse All rights reserved. Powered by Informatic's Student at AAU.</p>
-                <p><span>We Using Safe Payment For:</span><a href="#"><img src="img/payment-method/1.jpg" alt="" /></a><a href="#"><img src="img/payment-method/2.jpg" alt="" /></a><a href="#"><img src="img/payment-method/3.jpg" alt="" /></a><a href="#"><img src="img/payment-method/4.jpg" alt="" /></a><a href="#"><img src="img/payment-method/5.jpg" alt="" /></a></p>
+                <p><span>We Using Safe Payment For:</span><a href="#"><img th:src="@{img/payment-method/1.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/2.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/3.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/4.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/5.jpg}" alt="" /></a></p>
             </div>
         </div>
     </footer>
@@ -1570,15 +1570,15 @@
             <div class="ps-cart--mobile">
                 <div class="ps-cart__content">
                     <div class="ps-product--cart-mobile">
-                        <div class="ps-product__thumbnail"><a href="#"><img src="img/products/clothing/7.jpg" alt=""></a></div>
-                        <div class="ps-product__content"><a class="ps-product__remove" href="#"><i class="icon-cross"></i></a><a href="product-default.html">MVMTH Classical Leather Watch In Black</a>
+                        <div class="ps-product__thumbnail"><a href="#"><img th:src="@{img/products/clothing/7.jpg}" alt=""></a></div>
+                        <div class="ps-product__content"><a class="ps-product__remove" href="#"><i class="icon-cross"></i></a><a th:href="@{product-default.html}">MVMTH Classical Leather Watch In Black</a>
                             <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x €59.99</small>
                         </div>
                     </div>
                 </div>
                 <div class="ps-cart__footer">
                     <h3>Sub Total:<strong>€59.99</strong></h3>
-                    <figure><a class="ps-btn" href="shopping-cart.html">View Cart</a><a class="ps-btn" href="checkout.html">Checkout</a></figure>
+                    <figure><a class="ps-btn" th:href="@{shopping-cart.html}">View Cart</a><a class="ps-btn" th:href="@{checkout.html}">Checkout</a></figure>
                 </div>
             </div>
         </div>
@@ -1862,15 +1862,15 @@
                     <div class="ps-product__header">
                         <div class="ps-product__thumbnail" data-vertical="false">
                             <div class="ps-product__images" data-arrow="true">
-                                <div class="item"><img src="img/products/detail/fullwidth/1.jpg" alt=""></div>
-                                <div class="item"><img src="img/products/detail/fullwidth/2.jpg" alt=""></div>
-                                <div class="item"><img src="img/products/detail/fullwidth/3.jpg" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/1.jpg}" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/2.jpg}" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/3.jpg}" alt=""></div>
                             </div>
                         </div>
                         <div class="ps-product__info">
                             <h1>Marshall Kilburn Portable Wireless Speaker</h1>
                             <div class="ps-product__meta">
-                                <p>Brand:<a href="shop-default.html">Sony</a></p>
+                                <p>Brand:<a th:href="@{shop-default.html}">Sony</a></p>
                                 <div class="ps-product__rating">
                                     <select class="ps-rating" data-read-only="true">
                                         <option value="1">1</option>
@@ -1883,7 +1883,7 @@
                             </div>
                             <h4 class="ps-product__price">€36.78 – €56.99</h4>
                             <div class="ps-product__desc">
-                                <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                                <p>Sold By:<a th:href="@{shop-default.html}"><strong> Go Pro</strong></a></p>
                                 <ul class="ps-list--dot">
                                     <li> Unrestrained and portable active stereo speaker</li>
                                     <li> Free from the confines of wires and chords</li>
@@ -1901,24 +1901,24 @@
             </div>
         </div>
     </div>
-    <script src="plugins/jquery.min.js"></script>
-    <script src="plugins/nouislider/nouislider.min.js"></script>
-    <script src="plugins/popper.min.js"></script>
-    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/imagesloaded.pkgd.min.js"></script>
-    <script src="plugins/masonry.pkgd.min.js"></script>
-    <script src="plugins/isotope.pkgd.min.js"></script>
-    <script src="plugins/jquery.matchHeight-min.js"></script>
-    <script src="plugins/slick/slick/slick.min.js"></script>
-    <script src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-    <script src="plugins/slick-animation.min.js"></script>
-    <script src="plugins/lightGallery-master/dist/js/lightgallery-all.min.js"></script>
-    <script src="plugins/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
-    <script src="plugins/select2/dist/js/select2.full.min.js"></script>
-    <script src="plugins/gmap3.min.js"></script>
+    <script th:src="@{plugins/jquery.min.js}"></script>
+    <script th:src="@{plugins/nouislider/nouislider.min.js}"></script>
+    <script th:src="@{plugins/popper.min.js}"></script>
+    <script th:src="@{plugins/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{plugins/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{plugins/masonry.pkgd.min.js}"></script>
+    <script th:src="@{plugins/isotope.pkgd.min.js}"></script>
+    <script th:src="@{plugins/jquery.matchHeight-min.js}"></script>
+    <script th:src="@{plugins/slick/slick/slick.min.js}"></script>
+    <script th:src="@{plugins/jquery-bar-rating/dist/jquery.barrating.min.js}"></script>
+    <script th:src="@{plugins/slick-animation.min.js}"></script>
+    <script th:src="@{plugins/lightGallery-master/dist/js/lightgallery-all.min.js}"></script>
+    <script th:src="@{plugins/sticky-sidebar/dist/sticky-sidebar.min.js}"></script>
+    <script th:src="@{plugins/select2/dist/js/select2.full.min.js}"></script>
+    <script th:src="@{plugins/gmap3.min.js}"></script>
     <!-- custom scripts-->
-    <script src="js/main.js"></script>
+    <script th:src="@{js/main.js}"></script>
 </body>
 
 

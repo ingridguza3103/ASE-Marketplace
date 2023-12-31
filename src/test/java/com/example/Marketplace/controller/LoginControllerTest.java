@@ -5,6 +5,8 @@ import com.example.Marketplace.model.User;
 import com.example.Marketplace.repository.UserRepository;
 
 import com.example.Marketplace.service.TokenService;
+import com.example.Marketplace.service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -20,6 +24,8 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -38,6 +44,9 @@ public class LoginControllerTest {
 
     @MockBean
     private TokenService tokenService;
+
+    @MockBean
+    private UserService userService;
 
     private User mockUser;
 
@@ -63,39 +72,83 @@ public class LoginControllerTest {
     }
 
     @Test
+    public void testLoginSuccessPage() throws Exception {
+        // mock get operation to see if index page works
+        mockMvc.perform(get("/login_success"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("login_success"));
+    }
+    @Test
+    public void testRegistrationSuccessPage() throws Exception {
+        // mock get operation to see if index page works
+        mockMvc.perform(get("/registration_success"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("registration_success"));
+    }
+
+    @Test
     public void testSuccessfulLogin() throws Exception {
         String username = "mockUser";
         String correctPw = "mockPassword";
-        // mock userRepository to return true simulating that the user exists in the db
-        when(userRepository.checkUserExists(username)).thenReturn(true);
-        // mock userRepository user object return
-        when(userRepository.findByUserName(username)).thenReturn(mockUser);
-        // mock password input correct
-        when(passwordEncoder.matches(correctPw, mockUser.getPw())).thenReturn(true);
-        // mock post request to login page and simulate correct user login
+        String mockToken = tokenService.generateToken(mockUser);
+
+        HttpHeaders header = new HttpHeaders();
+        header.add("Authorization", "Bearer " + mockToken);
+
+
+        // Mock userService to return true indicating successful login
+        when(userService.loginUser(any(User.class))).thenReturn(true);
+        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString()))
+                .thenReturn(ResponseEntity.ok().headers(header).body("login_success"));
+
+        // Perform the login test
         MvcResult result = mockMvc.perform(post("/login")
                         .param("username", username)
                         .param("pw", correctPw))
                 .andExpect(status().isOk())
-                //.andExpect(view().name("login_success"));
                 .andReturn();
 
+        // Extract token and response
         String token = result.getResponse().getHeader("Authorization");
         String response = result.getResponse().getContentAsString();
 
-        // TODO: refactor to custom assertion
+        // Assertions
         assertNotNull(token, "Token check");
         assertEquals("login_success", response, "Response message check");
-
 
     }
 
     @Test
+    public void testLoginFailure() throws Exception {
+        String username = "mockUser";
+        String correctPw = "mockPassword";
+
+
+        // Mock userService to return true indicating successful login
+        when(userService.loginUser(any(User.class))).thenReturn(false);
+
+
+        // Perform the login test
+        MvcResult result = mockMvc.perform(post("/login")
+                        .param("username", username)
+                        .param("pw", correctPw))
+                .andExpect(status().is(401))
+                .andReturn();
+
+        // Extract token and response
+        String response = result.getResponse().getContentAsString();
+
+        assertEquals("login_failed", response, "Response message check");
+
+    }
+
+  /*  @Test
+    // TODO: test this in UserServiceTest
     public void testIncorrectPassword() throws Exception {
         String username = "mockUser";
         String wrongPw = "notMockPassword";
         // mock userRepository to return true simulating that the user exists in the db
-        when(userRepository.checkUserExists(username)).thenReturn(true);
+        when(userService.loginUser(mockUser)).thenReturn(true);
 
         // mock userRepository user object return
         when(userRepository.findByUserName(username)).thenReturn(mockUser);
@@ -105,14 +158,14 @@ public class LoginControllerTest {
         MvcResult result = mockMvc.perform(post("/login")
                         .param("username", username)
                         .param("pw", wrongPw))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().is(401))
                 //.andExpect(view().name("my-account"))
                 //.andExpect(model().attributeExists("loginError"))
                 .andReturn();
 
         String response = result.getResponse().getContentAsString();
 
-        assertEquals("my-account", response, "Response message check");
+        assertEquals("login_failed", response, "Response message check");
 
     }
 
@@ -127,46 +180,73 @@ public class LoginControllerTest {
        MvcResult result = mockMvc.perform(post("/login")
                 .param("username", username)
                 .param("pw", password))
-        .andExpect(status().isBadRequest())
+        .andExpect(status().is(401))
         //.andExpect(view().name("my-account"))
         //.andExpect(model().attributeExists("loginError"))
         .andReturn();
 
         String response = result.getResponse().getContentAsString();
 
-        assertEquals("my-account", response, "Response message check");
+        assertEquals("login_failed", response, "Response message check");
     }
 
-
+*/
     @Test
     public void testRegistrationSuccess() throws Exception {
-        String username = "newUser";
-        String password = "password";
+        String username = "mockUser";
+        String correctPw = "mockPassword";
+        String mockToken = tokenService.generateToken(mockUser);
 
-        // mock the repository to return false when checkUserExists so the user can be registered
-        when(userRepository.checkUserExists(username)).thenReturn(false);
-        // mock user injection
-        mockMvc.perform(post("/register")
+        HttpHeaders header = new HttpHeaders();
+        header.add("Authorization", "Bearer " + mockToken);
+
+
+        // Mock userService to return true indicating successful login
+        when(userService.registerUser(any(User.class))).thenReturn(true);
+        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString()))
+                .thenReturn(ResponseEntity.ok().headers(header).body("registration_success"));
+
+        // Perform the login test
+        MvcResult result = mockMvc.perform(post("/register")
                         .param("username", username)
-                        .param("pw", password))
+                        .param("pw", correctPw))
                 .andExpect(status().isOk())
-                .andExpect(view().name("registration_success"));
+                .andReturn();
+
+        // Extract token and response
+        String token = result.getResponse().getHeader("Authorization");
+        String response = result.getResponse().getContentAsString();
+
+        // Assertions
+        assertNotNull(token, "Token check");
+        assertEquals("registration_success", response, "Response message check");
+
+
     }
 
     @Test
     public void testRegistrationFailure() throws Exception {
-        String username = "newUser";
-        String password = "password";
+        String username = "mockUser";
+        String correctPw = "mockPassword";
 
-        // mock the repository to return true to simulate user already existing
-        when(userRepository.checkUserExists(username)).thenReturn(true);
-        // mock user injection
-        mockMvc.perform(post("/register")
+
+        // Mock userService to return true indicating successful login
+        when(userService.registerUser(any(User.class))).thenReturn(false);
+
+
+        // Perform the login test
+        MvcResult result = mockMvc.perform(post("/register")
                         .param("username", username)
-                        .param("pw", password))
-                .andExpect(status().isOk())
-                .andExpect(view().name("my-account"))
-                .andExpect(model().attributeExists("loginError"));
+                        .param("pw", correctPw))
+                .andExpect(status().is(401))
+                .andReturn();
+
+        // Extract token and response
+        String response = result.getResponse().getContentAsString();
+
+        assertEquals("registration_failed", response, "Response message check");
+
+
     }
 
 }

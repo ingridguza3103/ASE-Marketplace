@@ -1,10 +1,10 @@
 <!-- headers-->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
 <head>
-    <link rel="icon" type="image/x-icon" href="img/reuse-fav.png">
+    <link rel="icon" type="image/x-icon" th:href="@{img/reuse-fav.png}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,17 +15,17 @@
     <meta name="description" content="">
     <title>Reuse -  Isak, Selina - Lesacher Raphael - Guza, Ingrid - Halipaj, Erisa - Izadi Mehr, Seyed Mohammad Hossein Project</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/Linearicons/Linearicons/Font/demo-files/demo.css">
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="plugins/slick/slick/slick.css">
-    <link rel="stylesheet" href="plugins/nouislider/nouislider.min.css">
-    <link rel="stylesheet" href="plugins/lightGallery-master/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-    <link rel="stylesheet" href="plugins/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{fonts/Linearicons/Linearicons/Font/demo-files/demo.css}">
+    <link rel="stylesheet" th:href="@{plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/owl-carousel/assets/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/owl-carousel/assets/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/slick/slick/slick.css}">
+    <link rel="stylesheet" th:href="@{plugins/nouislider/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/lightGallery-master/dist/css/lightgallery.min.css}">
+    <link rel="stylesheet" th:href="@{plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css}">
+    <link rel="stylesheet" th:href="@{plugins/select2/dist/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 
 <body>
@@ -274,7 +274,7 @@
 
                             </ul>
                         </div>
-                    </div><a class="ps-logo" href="index.html"><img src="img/logo_light.png" alt="" /></a>
+                    </div><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a>
                 </div>
 
 
@@ -301,8 +301,8 @@
                         <div class="ps-panel--search-result">
                             <div class="ps-panel__content">
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 32GB</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 32GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -316,8 +316,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 64GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -331,8 +331,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/1.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 128GB</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 128GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -346,8 +346,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/2.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/2.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Marshall Kilburn Portable Wireless Speaker</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -361,8 +361,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/3.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/3.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Herschel Leather Duffle Bag In Brown Color</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -376,8 +376,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/4.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/4.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Xbox One Wireless Controller Black Color</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -391,8 +391,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/5.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/5.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Grand Slam Indoor Of Show Jumping Novel</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -406,8 +406,8 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/arrivals/6.jpg" alt="" /></a></div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/6.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Sound Intone I65 Earphone White Version</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <option value="1">1</option>
@@ -421,7 +421,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ps-panel__footer text-center"><a href="shop-default.html">See all results</a></div>
+                            <div class="ps-panel__footer text-center"><a th:href="@{shop-default.html}">See all results</a></div>
                         </div>
                     </form>
                 </div>
@@ -430,11 +430,11 @@
 
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-bag2"></i></div>
-                            <div class="ps-block__right"><a href="my-account.html">Cart</a><a href="my-account.html">Checkout</a></div>
+                            <div class="ps-block__right"><a th:href="@{my-account.html}">Cart</a><a th:href="@{my-account.html}">Checkout</a></div>
                         </div>
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a href="my-account.html">Login</a><a href="my-account.html">Register</a></div>
+                            <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
                         </div>
                     </div>
                 </div>
@@ -725,15 +725,15 @@
     <header class="header header--mobile" data-sticky="true">
 
         <div class="navigation--mobile">
-            <div class="navigation__left"><a class="ps-logo" href="index.html"><img src="img/logo_light.png" alt="" /></a></div>
+            <div class="navigation__left"><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
             <div class="navigation__right">
                 <div class="header__actions">
                     <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
 
                     </div>
                     <div class="ps-block--user-header">
-                        <div class="ps-block__left"><a href="my-account.html"><i class="icon-user"></i></a></div>
-                        <div class="ps-block__right"><a href="my-account.html">Login</a><a href="my-account.html">Register</a></div>
+                        <div class="ps-block__left"><a th:href="@{my-account.html}"><i class="icon-user"></i></a></div>
+                        <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
                     </div>
                 </div>
             </div>
@@ -751,8 +751,8 @@
         <div class="ps-breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="user-information.html">Account</a></li>
+                    <li><a th:href="@{index.html}">Home</a></li>
+                    <li><a th:href="@{user-information.html}">Account</a></li>
                     <li>Invoices</li>
                 </ul>
             </div>
@@ -763,7 +763,7 @@
                     <div class="col-lg-4">
                         <div class="ps-section__left">
                             <aside class="ps-widget--account-dashboard">
-                                <div class="ps-widget__header"><img src="img/users/3.jpg" alt="" />
+                                <div class="ps-widget__header"><img th:src="@{img/users/3.jpg}" alt="" />
                                     <figure>
                                         <figcaption>Hello</figcaption>
                                         <p><a href="#">Test@gmail.com</a></p>
@@ -800,29 +800,29 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><a href="invoice-detail.html">500884010</a></td>
-                                                    <td><a href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a></td>
+                                                    <td><a th:href="@{invoice-detail.html}">500884010</a></td>
+                                                    <td><a th:href="@{product-default.html}">Marshall Kilburn Portable Wireless Speaker</a></td>
                                                     <td>20-12-2023</td>
                                                     <td>42.99</td>
                                                     <td>Successful delivery</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a href="invoice-detail.html">593347935</a></td>
-                                                    <td><a href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a></td>
+                                                    <td><a th:href="@{invoice-detail.html}">593347935</a></td>
+                                                    <td><a th:href="@{product-default.html}">Herschel Leather Duffle Bag In Brown Color</a></td>
                                                     <td>20-12-2023</td>
                                                     <td>199.99</td>
                                                     <td>Cancel</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a href="invoice-detail.html">593347935</a></td>
-                                                    <td><a href="product-default.html">Xbox One Wireless Controller Black Color</a></td>
+                                                    <td><a th:href="@{invoice-detail.html}">593347935</a></td>
+                                                    <td><a th:href="@{product-default.html}">Xbox One Wireless Controller Black Color</a></td>
                                                     <td>20-12-2023</td>
                                                     <td>199.99</td>
                                                     <td>Cancel</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a href="invoice-detail.html">615397400</a></td>
-                                                    <td><a href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a></td>
+                                                    <td><a th:href="@{invoice-detail.html}">615397400</a></td>
+                                                    <td><a th:href="@{product-default.html}">Grand Slam Indoor Of Show Jumping Novel</a></td>
                                                     <td>20-12-2023</td>
                                                     <td>41.00</td>
                                                     <td>Cancel</td>
@@ -859,36 +859,36 @@
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Quick links</h4>
                     <ul class="ps-list--link">
-                        <li><a href="policy.html">Policy</a></li>
-                        <li><a href="term-condition.html">Term & Condition</a></li>
-                        <li><a href="shipping.html">Shipping</a></li>
-                        <li><a href="return.html">Return</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a th:href="@{policy.html}">Policy</a></li>
+                        <li><a th:href="@{term-condition.html}">Term & Condition</a></li>
+                        <li><a th:href="@{shipping.html}">Shipping</a></li>
+                        <li><a th:href="@{return.html}">Return</a></li>
+                        <li><a th:href="@{faqs.html}">FAQs</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Company</h4>
                     <ul class="ps-list--link">
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="affilate.html">Affilate</a></li>
-                        <li><a href="shipping.html">Career</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a th:href="@{about-us.html}">About Us</a></li>
+                        <li><a th:href="@{affilate.html}">Affilate</a></li>
+                        <li><a th:href="@{shipping.html}">Career</a></li>
+                        <li><a th:href="@{contact.html}">Contact</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Bussiness</h4>
                     <ul class="ps-list--link">
-                        <li><a href="our-press.html">Our Press</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="my-account.html">My account</a></li>
-                        <li><a href="shop.html">Shop</a></li>
+                        <li><a th:href="@{our-press.html}">Our Press</a></li>
+                        <li><a th:href="@{checkout.html}">Checkout</a></li>
+                        <li><a th:href="@{my-account.html}">My account</a></li>
+                        <li><a th:href="@{shop.html}">Shop</a></li>
                     </ul>
                 </aside>
             </div>
 
             <div class="ps-footer__copyright">
                 <p>&copy; 2023 - 2024 Reuse All rights reserved. Powered by Informatic's Student at AAU.</p>
-                <p><span>We Using Safe Payment For:</span><a href="#"><img src="img/payment-method/1.jpg" alt="" /></a><a href="#"><img src="img/payment-method/2.jpg" alt="" /></a><a href="#"><img src="img/payment-method/3.jpg" alt="" /></a><a href="#"><img src="img/payment-method/4.jpg" alt="" /></a><a href="#"><img src="img/payment-method/5.jpg" alt="" /></a></p>
+                <p><span>We Using Safe Payment For:</span><a href="#"><img th:src="@{img/payment-method/1.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/2.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/3.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/4.jpg}" alt="" /></a><a href="#"><img th:src="@{img/payment-method/5.jpg}" alt="" /></a></p>
             </div>
         </div>
     </footer>
@@ -906,7 +906,7 @@
             
                 <div class="ps-cart__footer">
                     <h3>Sub Total:<strong>€0</strong></h3>
-                    <figure><a class="ps-btn" href="shopping-cart.html">View Cart</a><a class="ps-btn" href="checkout.html">Checkout</a></figure>
+                    <figure><a class="ps-btn" th:href="@{shopping-cart.html}">View Cart</a><a class="ps-btn" th:href="@{checkout.html}">Checkout</a></figure>
                 </div>
             </div>
         </div>
@@ -1190,15 +1190,15 @@
                     <div class="ps-product__header">
                         <div class="ps-product__thumbnail" data-vertical="false">
                             <div class="ps-product__images" data-arrow="true">
-                                <div class="item"><img src="img/products/detail/fullwidth/1.jpg" alt=""></div>
-                                <div class="item"><img src="img/products/detail/fullwidth/2.jpg" alt=""></div>
-                                <div class="item"><img src="img/products/detail/fullwidth/3.jpg" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/1.jpg}" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/2.jpg}" alt=""></div>
+                                <div class="item"><img th:src="@{img/products/detail/fullwidth/3.jpg}" alt=""></div>
                             </div>
                         </div>
                         <div class="ps-product__info">
                             <h1>Marshall Kilburn Portable Wireless Speaker</h1>
                             <div class="ps-product__meta">
-                                <p>Brand:<a href="shop-default.html">Sony</a></p>
+                                <p>Brand:<a th:href="@{shop-default.html}">Sony</a></p>
                                 <div class="ps-product__rating">
                                     <select class="ps-rating" data-read-only="true">
                                         <option value="1">1</option>
@@ -1211,7 +1211,7 @@
                             </div>
                             <h4 class="ps-product__price">€36.78 – €56.99</h4>
                             <div class="ps-product__desc">
-                                <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                                <p>Sold By:<a th:href="@{shop-default.html}"><strong> Go Pro</strong></a></p>
                                 <ul class="ps-list--dot">
                                     <li> Unrestrained and portable active stereo speaker</li>
                                     <li> Free from the confines of wires and chords</li>
@@ -1229,24 +1229,24 @@
             </div>
         </div>
     </div>
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="plugins/jquery.min.js"></script>
-    <script src="plugins/nouislider/nouislider.min.js"></script>
-    <script src="plugins/popper.min.js"></script>
-    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/imagesloaded.pkgd.min.js"></script>
-    <script src="plugins/masonry.pkgd.min.js"></script>
-    <script src="plugins/isotope.pkgd.min.js"></script>
-    <script src="plugins/jquery.matchHeight-min.js"></script>
-    <script src="plugins/slick/slick/slick.min.js"></script>
-    <script src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-    <script src="plugins/slick-animation.min.js"></script>
-    <script src="plugins/lightGallery-master/dist/js/lightgallery-all.min.js"></script>
-    <script src="plugins/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
-    <script src="plugins/select2/dist/js/select2.full.min.js"></script>
-    <script src="plugins/gmap3.min.js"></script>
+    <script data-cfasync="false" th:src="@{../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js}"></script><script th:src="@{plugins/jquery.min.js}"></script>
+    <script th:src="@{plugins/nouislider/nouislider.min.js}"></script>
+    <script th:src="@{plugins/popper.min.js}"></script>
+    <script th:src="@{plugins/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{plugins/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{plugins/masonry.pkgd.min.js}"></script>
+    <script th:src="@{plugins/isotope.pkgd.min.js}"></script>
+    <script th:src="@{plugins/jquery.matchHeight-min.js}"></script>
+    <script th:src="@{plugins/slick/slick/slick.min.js}"></script>
+    <script th:src="@{plugins/jquery-bar-rating/dist/jquery.barrating.min.js}"></script>
+    <script th:src="@{plugins/slick-animation.min.js}"></script>
+    <script th:src="@{plugins/lightGallery-master/dist/js/lightgallery-all.min.js}"></script>
+    <script th:src="@{plugins/sticky-sidebar/dist/sticky-sidebar.min.js}"></script>
+    <script th:src="@{plugins/select2/dist/js/select2.full.min.js}"></script>
+    <script th:src="@{plugins/gmap3.min.js}"></script>
     <!-- custom scripts-->
-    <script src="js/main.js"></script>
+    <script th:src="@{js/main.js}"></script>
 </body>
 
 

@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
+
           <link rel="icon" type="image/x-icon" th:href="@{img/reuse-fav.png}">
 
     <meta charset="utf-8">
@@ -713,7 +714,7 @@
                     </ul>
                     <ul class="navigation__extra">
                         <li><a href="#">Sell on Reuse</a></li>
-                        <li><a href="#">Tract your order</a></li>
+                        <li><a href="#">Track your order</a></li>
                         
                     </ul>
                 </div>
@@ -761,16 +762,17 @@
                         <li class="active"><a href="#sign-in" th:href="@{#sign-in}">Login</a></li>
                         <li><a href="#register" th:href="@{#register}">Register</a></li>
                     </ul>
-		            <p class="logInError" th:if="${loginError}" th:text="${loginError}" style="color: red;"></p>
+
                     <div class="ps-tabs">
                         <div class="ps-tab active" id="sign-in">
                             <div class="ps-form__content">
                                 <h5>Log In To Your Account</h5>
                                 <div class="form-group">
-                                    <input class="form-control" th:field="*{username}" type="text" required placeholder="Username">
+                                    <input class="form-control" id="loginUsername" th:field="*{username}" type="text" required placeholder="Username">
                                 </div>
                                 <div class="form-group form-forgot">
-                                    <input class="form-control" type="password" th:field="*{pw}" required placeholder="Password"><a href="#">Forgot?</a>
+                                    <input class="form-control" id="loginPw" type="password" th:field="*{pw}" required placeholder="Password"><a href="#">Forgot?</a>
+                                    <p id="loginError" style="color:red; display: none">Username or Password incorrect</p>
                                 </div>
                                 <div class="form-group">
                                     <div class="ps-checkbox">
@@ -791,10 +793,11 @@
                             <div class="ps-form__content">
                                 <h5>Create A New Account</h5>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" th:field="*{username}"  placeholder="Username" required>
+                                    <input class="form-control" id="registerUsername" type="text" th:field="*{username}"  placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="password" th:field="*{pw}"  placeholder="Password" required>
+                                    <input class="form-control" id="registerPw" type="password" th:field="*{pw}"  placeholder="Password" required>
+                                    <p id="registerError" style="color:red; display: none">Username already existing</p>
                                 </div>
                                 <div class="form-group submtit">
                                     <button type="button" onclick="submitForm('/register')" class="ps-btn ps-btn--fullwidth">Register</button>
@@ -806,7 +809,7 @@
                         </div>
                     </div>
                 </form>
-		        <script>
+		        <!--<script>
     			    function submitForm(action) {
         		    // Change the form method dynamically based on the button clicked
                         var form = document.getElementById('loginform');
@@ -849,7 +852,7 @@
                                 console.error('Error:', error);
                             });
     			}
-                </script>
+                </script> !-->
             </div>
         </div>
     </div>
@@ -1274,7 +1277,8 @@
     <script th:src="@{/plugins/select2/dist/js/select2.full.min.js}"></script>
     <script th:src="@{/plugins/gmap3.min.js}"></script>
     <!-- custom scripts-->
-    <script th:src="@{/js/main.js}"></script>
+   <script th:src="@{/js/main.js}"></script>
+
 </body>
 
 
