@@ -27,6 +27,7 @@ public class Product {
         this.quantity = quantity;
         this.categoryId = categoryId;
         this.sellerId = sellerId;
+        this.pictureUrl = pictureUrl;
     }
 
 
