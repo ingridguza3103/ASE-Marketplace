@@ -36,17 +36,16 @@ class UserRepositoryTest {
     void testCheckUserExists() {
         userRepository.save(user);
 
-        boolean isExisting = userRepository.checkUserExists(user.getUsername());
+        assertTrue(userRepository.checkUserExists(user.getUsername()));
 
-        assertThat(isExisting).isTrue();
     }
 
     @Test
     void testCheckUserNotExists() {
 
-        boolean isExisting = userRepository.checkUserExists(user.getUsername());
+        assertFalse(userRepository.checkUserExists(user.getUsername()));
 
-        assertThat(isExisting).isFalse();
+
     }
 
     @Test
