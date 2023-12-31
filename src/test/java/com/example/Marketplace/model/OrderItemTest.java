@@ -41,20 +41,20 @@ class OrderItemTest {
     }
 
     @Test
-    void getTotal() {
+    void testGetTotal() {
 
         assertEquals(product.getPrice()*3, orderItem.getTotal());
 
     }
 
     @Test
-    void getProduct() {
+    void testGetProduct() {
 
         assertEquals(product, orderItem.getProduct());
     }
 
     @Test
-    void getOrder() {
+    void testGetOrder() {
         assertEquals(order, orderItem.getOrder());
     }
 }

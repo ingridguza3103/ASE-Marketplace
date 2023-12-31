@@ -45,7 +45,7 @@ class OrderTest {
     }
 
     @Test
-    void calculateOrderTotal() {
+    void testCalculateOrderTotal() {
 
         double orderTotal = item1.getTotal() + item2.getTotal();
 
@@ -59,7 +59,7 @@ class OrderTest {
     }
 
     @Test
-    void setId() {
+    void testSetId() {
         long id = 2;
         order.setId(id);
 
@@ -67,12 +67,12 @@ class OrderTest {
     }
 
     @Test
-    void getId() {
+    void testGetId() {
         assertEquals(1, order.getId());
     }
 
     @Test
-    void getProducts() {
+    void testGetProducts() {
         // since we added two OrderItems to products the getProducts size should be two
         List<OrderItem> retrievedItems = order.getProducts();
 
@@ -81,7 +81,7 @@ class OrderTest {
     }
 
     @Test
-    void setProducts() {
+    void testSetProducts() {
         List<OrderItem> productsSet = new ArrayList<>();
         productsSet.add(new OrderItem());
 
@@ -90,7 +90,7 @@ class OrderTest {
     }
 
     @Test
-    void addProducts() {
+    void testAddProducts() {
         // old size of products is 2 in this test one item is added therefore we assert the new size to 3
         OrderItem addItem = new OrderItem(order, new Product(3L, "add", 3.00, 1000, 3, 34L, ""), 1);
 
@@ -101,14 +101,14 @@ class OrderTest {
     }
 
     @Test
-    void getOrderPlaced() {
+    void testGetOrderPlaced() {
 
         assertEquals(timestamp, order.getOrderPlaced());
 
     }
 
     @Test
-    void setOrderPlaced() {
+    void testSetOrderPlaced() {
         LocalDateTime time = LocalDateTime.now();
 
         order.setOrderPlaced(time);

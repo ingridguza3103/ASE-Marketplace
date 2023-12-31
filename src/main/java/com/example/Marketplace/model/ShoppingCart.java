@@ -41,6 +41,10 @@ public class ShoppingCart {
         }
     }
 
+    public Map<Product, Integer> getItems() {
+        return products;
+    }
+
     public Order onCheckOut() {
         // TODO: Authenticate User
         Order order = new Order();
