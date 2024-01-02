@@ -45,6 +45,12 @@ public class ShoppingCart {
         return products;
     }
 
+    /**
+     * This method contains the logic that is performed when the User hits check out in the shopping cart.
+     * The ShoppingCart is converted to an Order object and the sellers of the products that are ordered get notified
+     * with the buyer information and the ordered quantity.
+     * @return the resulting Order object as a confirmation
+     */
     public Order onCheckOut() {
         // TODO: Authenticate User
         Order order = new Order();

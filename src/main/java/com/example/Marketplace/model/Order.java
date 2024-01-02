@@ -13,7 +13,9 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-
+/**
+ * This class represents an Order with the list of all items that the user bought and the total price
+ */
 @Entity
 @Table(name="orders")
 public class Order {
@@ -32,9 +34,9 @@ public class Order {
 
 
     /**
-     * calculate total price of the order
+     * calculate the total price of the order
+     * @return the total price
      */
-
     public double calculateOrderTotal() {
         double sum = 0.0;
 

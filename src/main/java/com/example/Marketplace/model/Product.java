@@ -2,6 +2,9 @@ package com.example.Marketplace.model;
 
 import jakarta.persistence.*;
 
+/**
+ * This class is used to represent a product in the web-shop with all the relevant information
+ **/
 @Entity
 @Table(name="products")
 public class Product {
