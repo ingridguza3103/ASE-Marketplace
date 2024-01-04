@@ -13,5 +13,7 @@ public interface ProductService {
 
     void removeProduct(Product product);
 
+    boolean enoughQuantity(Long id, int quantity);
+
 
 }

@@ -2,6 +2,7 @@ package com.example.Marketplace.model;
 
 
 import com.example.Marketplace.service.OrderService;
+import com.example.Marketplace.service.ProductService;
 import com.example.Marketplace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,11 +25,20 @@ public class ShoppingCart {
     OrderService orderService;
     @Autowired
     UserService userService;
+    @Autowired
+    ProductService productService;
 
     public ShoppingCart(){}
 
     public void addItem(Product product, int quantity) {
-        products.put(product, products.getOrDefault(product, 0) + quantity);
+        // check if product available in the desired quantity
+        if (productService.enoughQuantity(product.getId(), quantity)) {
+            products.put(product, products.getOrDefault(product, 0) + quantity);
+        } else { // not enough quantity left
+            // TODO: print not enough in stock to the user
+            return;
+        }
+
     }
 
     public void removeItem(Product product, int quantity) {

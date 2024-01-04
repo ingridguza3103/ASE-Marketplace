@@ -66,4 +66,9 @@ public class ProductServiceImpl implements ProductService {
         }
 
     }
+
+    @Override
+    public boolean enoughQuantity(Long id, int quantity) {
+        return productRepository.availableInDesiredQty(id, quantity);
+    }
 }

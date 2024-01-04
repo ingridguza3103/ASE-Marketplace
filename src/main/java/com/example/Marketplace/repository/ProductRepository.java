@@ -18,4 +18,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     @Query("SELECT EXISTS(SELECT p FROM Product p WHERE p.id = :id)")
     boolean checkProductExists(Long id);
+
+    /**
+     * This method queries the database for a given product and checks if there are enough left to fulfill the
+     * desired quantity.
+     * @param id id of the product
+     * @param qty the quantity in which the user tries to add the product to the shopping cart
+     * @return true if enough in stock, false otherwise
+     */
+    @Query("SELECT COUNT(p) From Product p WHERE p.id = :id AND p.quantity >= :qty")
+    boolean availableInDesiredQty(Long id, int qty);
 }
