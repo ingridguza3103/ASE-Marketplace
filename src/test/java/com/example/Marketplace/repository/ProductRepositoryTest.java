@@ -38,4 +38,22 @@ class ProductRepositoryTest {
     void testCheckProductNotExists() {
         assertFalse(productRepository.checkProductExists(product.getId()));
     }
+
+    @Test
+    void testAvailableInDesiredQty() {
+        productRepository.save(product);
+        int quantity = 3;
+
+        assertTrue(productRepository.availableInDesiredQty(product.getId(), quantity));
+    }
+
+    @Test
+    void testNotAvailableInDesiredQty() {
+        product.setQuantity(2);
+        productRepository.save(product);
+        int quantity = 3;
+
+        assertFalse(productRepository.availableInDesiredQty(product.getId(), quantity));
+    }
+
 }

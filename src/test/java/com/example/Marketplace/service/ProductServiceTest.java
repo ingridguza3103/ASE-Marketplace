@@ -113,4 +113,24 @@ public class ProductServiceTest {
         verify(productRepository, times(0)).delete(mockProduct);
     }
 
+    @Test
+    public void testEnoughQuantity() {
+        int quantity = 3;
+        when(productRepository.availableInDesiredQty(mockProduct.getId(), quantity)).thenReturn(true);
+
+        boolean isAvailable = productService.enoughQuantity(mockProduct.getId(), quantity);
+
+        assertTrue(isAvailable);
+    }
+
+    @Test
+    public void testNotEnoughQuantity() {
+        int quantity = 3;
+        when(productRepository.availableInDesiredQty(mockProduct.getId(), quantity)).thenReturn(false);
+
+        boolean isAvailable = productService.enoughQuantity(mockProduct.getId(), quantity);
+
+        assertFalse(isAvailable);
+    }
+
 }

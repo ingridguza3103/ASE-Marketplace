@@ -26,6 +26,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @param qty the quantity in which the user tries to add the product to the shopping cart
      * @return true if enough in stock, false otherwise
      */
-    @Query("SELECT COUNT(p) From Product p WHERE p.id = :id AND p.quantity >= :qty")
+    @Query("SELECT COUNT(p) > 0 From Product p WHERE p.id = :id AND p.quantity >= :qty")
     boolean availableInDesiredQty(Long id, int qty);
 }
