@@ -30,4 +30,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
      */
     @Query("SELECT EXISTS(SELECT m FROM Message m WHERE  (m.senderId = :senderId AND m.recipientId = :recipientId) OR (m.senderId = :recipientId AND m.recipientId = :senderId))")
     boolean checkChatAlreadyExists(Long senderId, Long recipientId);
+
+    @Query("SELECT m FROM Message m WHERE m.sessionId = :sessionId")
+    List<Message> findMessagesBySessionId(Long sessionId);
 }

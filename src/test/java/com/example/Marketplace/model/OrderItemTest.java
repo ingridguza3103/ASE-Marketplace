@@ -22,7 +22,7 @@ class OrderItemTest {
 
     @BeforeEach
     void setUp() {
-        product = new Product(1L, "test", 10.50, 2000, 1, 21L, "");
+        product = new Product("test", 10.50, 2000, 1, 21L, "");
         order = new Order();
         order.setOrderPlaced(LocalDateTime.now());
 

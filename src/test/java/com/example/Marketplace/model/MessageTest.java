@@ -17,6 +17,7 @@ class MessageTest {
     private Long recipientId;
     private String content;
     private LocalDateTime timestamp;
+    private Long sessionId;
 
     @BeforeEach
     void setUp() {
@@ -25,8 +26,10 @@ class MessageTest {
         recipientId = 12L;
         content = "Hello this is a test message.";
         timestamp = LocalDateTime.now();
+        sessionId = 5L;
 
-        message = new Message(messageId, senderId, recipientId, content, timestamp);
+        message = new Message(senderId, recipientId, content, timestamp, sessionId);
+        message.setMessageId(messageId);
     }
 
     @AfterEach
@@ -35,7 +38,7 @@ class MessageTest {
     }
 
     @Test
-    void setMessageId() {
+    void testSetMessageId() {
         Long newId = 32L;
 
         message.setMessageId(newId);
@@ -44,17 +47,17 @@ class MessageTest {
     }
 
     @Test
-    void getMessageId() {
+    void testGetMessageId() {
         assertEquals(messageId, message.getMessageId());
     }
 
     @Test
-    void getSenderId() {
+    void testGetSenderId() {
         assertEquals(senderId, message.getSenderId());
     }
 
     @Test
-    void setSenderId() {
+    void testSetSenderId() {
         Long newSenderId = 4L;
         message.setSenderId(newSenderId);
 
@@ -62,12 +65,12 @@ class MessageTest {
     }
 
     @Test
-    void getRecipientId() {
+    void testGetRecipientId() {
         assertEquals(recipientId, message.getRecipientId());
     }
 
     @Test
-    void setRecipientId() {
+    void testSetRecipientId() {
         Long newRecipientId = 3L;
         message.setRecipientId(newRecipientId);
 
@@ -75,12 +78,12 @@ class MessageTest {
     }
 
     @Test
-    void getContent() {
+    void testGetContent() {
         assertEquals(content, message.getContent());
     }
 
     @Test
-    void setContent() {
+    void testSetContent() {
         String newContent = "Hello There.";
         message.setContent(newContent);
 
@@ -88,15 +91,28 @@ class MessageTest {
     }
 
     @Test
-    void getTimestamp() {
+    void testGetTimestamp() {
         assertEquals(timestamp, message.getTimestamp());
     }
 
     @Test
-    void setTimestamp() {
+    void testSetTimestamp() {
         LocalDateTime newTime = LocalDateTime.now();
         message.setTimestamp(newTime);
 
         assertEquals(newTime, message.getTimestamp());
+    }
+
+    @Test
+    void testGetSessionId() {
+        assertEquals(sessionId, message.getSessionId());
+    }
+
+    @Test
+    void testSetSessionId() {
+        Long newSessionId = 53L;
+        message.setSessionId(newSessionId);
+
+        assertEquals(newSessionId, message.getSessionId());
     }
 }

@@ -36,6 +36,7 @@ class MessageServiceTest {
     Long recipientId;
     String content;
     LocalDateTime timestamp;
+    Long sessionId;
 
     @BeforeEach
     void setUp() {
@@ -45,7 +46,8 @@ class MessageServiceTest {
         recipientId = 12L;
         content = "Hello this is a test message.";
         timestamp = LocalDateTime.now();
-        mockMessage = new Message(messageId, senderId, recipientId, content, timestamp);
+        sessionId = 4L;
+        mockMessage = new Message(senderId, recipientId, content, timestamp, sessionId);
     }
 
     @AfterEach
@@ -55,7 +57,7 @@ class MessageServiceTest {
     }
 
     @Test
-    void getChat() {
+    void testGetChat() {
         ArrayList<Message> chat = new ArrayList<>();
         chat.add(mockMessage);
         when(messageRepository.findMessagesFromChat(senderId, recipientId)).thenReturn(chat);
@@ -66,7 +68,7 @@ class MessageServiceTest {
     }
 
     @Test
-    void getChatNoChat() {
+    void testGetChatNoChat() {
 
         when(messageRepository.findMessagesFromChat(senderId, recipientId)).thenReturn(new ArrayList<>());
         List<Message> retrievedChat = messageService.getChat(senderId, recipientId);

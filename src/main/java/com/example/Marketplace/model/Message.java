@@ -1,6 +1,7 @@
 package com.example.Marketplace.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -19,15 +20,20 @@ public class Message {
     private String content;
     private LocalDateTime timestamp;
 
+    @NotNull
+    @Column(name = "session_id")
+    private Long sessionId;
+
     public Message() {}
 
-    public Message(Long messageId, Long senderId, Long recipientId, String content, LocalDateTime timestamp) {
-        this.messageId = messageId;
+    public Message(Long senderId, Long recipientId, String content, LocalDateTime timestamp, Long sessionId) {
         this.senderId = senderId;
         this.recipientId = recipientId;
         this.content = content;
         this.timestamp = timestamp;
+        this.sessionId = sessionId;
     }
+
 
     public void setMessageId(Long messageId) {
         this.messageId = messageId;
@@ -67,5 +73,13 @@ public class Message {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Long getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(Long sessionId) {
+        this.sessionId = sessionId;
     }
 }

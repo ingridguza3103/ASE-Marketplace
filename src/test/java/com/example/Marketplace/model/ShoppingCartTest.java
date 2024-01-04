@@ -28,7 +28,7 @@ class ShoppingCartTest {
 
     @Test
     void testAddItem() {
-        Product add = new Product(1L, "test", 2.80, 2000, 1, 34L, "");
+        Product add = new Product("test", 2.80, 2000, 1, 34L, "");
         int qty = 3;
 
         products.put(add, qty);
@@ -41,7 +41,7 @@ class ShoppingCartTest {
 
     @Test
     void testRemoveItem() {
-        Product add = new Product(1L, "test", 2.80, 2000, 1, 34L, "");
+        Product add = new Product("test", 2.80, 2000, 1, 34L, "");
         int qty = 3;
         shoppingCart.addItem(add, qty);
 

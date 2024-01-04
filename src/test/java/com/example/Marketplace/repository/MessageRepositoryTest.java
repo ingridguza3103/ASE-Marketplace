@@ -1,6 +1,7 @@
 package com.example.Marketplace.repository;
 
 import com.example.Marketplace.model.Message;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,13 @@ class MessageRepositoryTest {
     private Message message;
 
     private Long messageId;
+
     private Long senderId;
     private Long recipientId;
     private String content;
     private LocalDateTime timestamp;
+
+    private Long sessionId;
 
 
     @BeforeEach
@@ -34,8 +38,10 @@ class MessageRepositoryTest {
         recipientId = 12L;
         content = "Hello this is a test message.";
         timestamp = LocalDateTime.now();
+        sessionId = 23L;
 
-        message = new Message(messageId, senderId, recipientId, content, timestamp);
+        message = new Message(senderId, recipientId, content, timestamp, sessionId);
+
     }
 
     @AfterEach
@@ -45,25 +51,38 @@ class MessageRepositoryTest {
     }
 
     @Test
-    void findMessagesFromChat() {
+    @Transactional
+    void testFindMessagesFromChat() {
         messageRepository.save(message);
 
+        // Fetch the message and validate it
         ArrayList<Message> chat = (ArrayList<Message>) messageRepository.findMessagesFromChat(senderId, recipientId);
 
-        assertEquals(messageId,chat.get(0).getMessageId());
+        assertTrue(chat.contains(message));
 
 
     }
 
     @Test
-    void checkChatAlreadyExists() {
+    void testCheckChatAlreadyExists() {
         messageRepository.save(message);
 
         assertTrue(messageRepository.checkChatAlreadyExists(senderId, recipientId));
     }
 
     @Test
-    void checkChatNotAlreadyExists() {
+    void tesCheckChatNotAlreadyExists() {
         assertFalse(messageRepository.checkChatAlreadyExists(senderId, recipientId));
+    }
+
+    @Test
+    void testFindMessagesBySessionId() {
+        messageRepository.save(message);
+
+        ArrayList<Message> chat = (ArrayList<Message>) messageRepository.findMessagesBySessionId(sessionId);
+
+        assertEquals(sessionId,chat.get(0).getSessionId());
+
+
     }
 }

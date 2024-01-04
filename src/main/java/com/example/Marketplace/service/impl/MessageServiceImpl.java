@@ -26,4 +26,14 @@ public class MessageServiceImpl implements MessageService {
     public List<Message> getChat(Long senderId, Long recipientId) {
         return messageRepository.findMessagesFromChat(senderId, recipientId);
     }
+
+    @Override
+    public void saveMessage(Message message) {
+        messageRepository.save(message);
+    }
+
+    @Override
+    public List<Message> restoreChatSession(Long sessionId) {
+        return messageRepository.findMessagesBySessionId(sessionId);
+    }
 }
