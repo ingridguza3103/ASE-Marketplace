@@ -7,6 +7,6 @@ public interface ChatSessionService {
     ChatSession restoreChatSessionByUserIds(Long buyerId, Long sellerId);
 
     boolean sessionAlreadyExists(Long id);
-    boolean sessionAlreadyExists(Long buyerId, Long sellerId);
+    boolean sessionAlreadyExistsByUserIds(Long buyerId, Long sellerId);
 
 }

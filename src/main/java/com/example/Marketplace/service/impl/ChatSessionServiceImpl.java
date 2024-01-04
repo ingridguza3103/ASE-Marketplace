@@ -7,6 +7,7 @@ import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ChatSessionServiceImpl implements ChatSessionService {
     @Autowired
@@ -30,7 +31,7 @@ public class ChatSessionServiceImpl implements ChatSessionService {
     }
 
     @Override
-    public boolean sessionAlreadyExists(Long buyerId, Long sellerId) {
+    public boolean sessionAlreadyExistsByUserIds(Long buyerId, Long sellerId) {
         return chatSessionRepository.existsByUserIds(buyerId, sellerId);
     }
 }

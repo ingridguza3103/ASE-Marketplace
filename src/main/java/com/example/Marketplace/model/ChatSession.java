@@ -1,9 +1,6 @@
 package com.example.Marketplace.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +14,7 @@ import java.util.List;
 @Table(name="chat_sessions")
 public class ChatSession {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long buyerId;  // is sender and recipient in the chat session
     private Long sellerId; // is sender and recipient in the chat session
