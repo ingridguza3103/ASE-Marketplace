@@ -30,6 +30,11 @@ public class ShoppingCart {
 
     public ShoppingCart(){}
 
+    /**
+     * This method adds an item to the ShoppingCart
+     * @param product the product
+     * @param quantity the desired quantity
+     */
     public void addItem(Product product, int quantity) {
         // check if product available in the desired quantity
         if (productService.enoughQuantity(product.getId(), quantity)) {
@@ -41,6 +46,11 @@ public class ShoppingCart {
 
     }
 
+    /**
+     * This method removes an item to the ShoppingCart
+     * @param product the product
+     * @param quantity the quantity
+     */
     public void removeItem(Product product, int quantity) {
         int currentQuantity = products.getOrDefault(product, 0);
 
