@@ -7,7 +7,9 @@ import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * This class is used for calling the SQL queries from ChatSessionRepository
+ */
 @Service
 public class ChatSessionServiceImpl implements ChatSessionService {
     @Autowired

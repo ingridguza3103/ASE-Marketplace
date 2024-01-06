@@ -1,5 +1,7 @@
 package com.example.Marketplace.controller;
 
+import com.example.Marketplace.service.ShoppingCartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,5 +9,7 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ShoppingCartController {
+    @Autowired
+    private ShoppingCartService shoppingCartService;
     // TODO: implement!!
 }
