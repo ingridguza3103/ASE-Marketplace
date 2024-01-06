@@ -19,7 +19,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        product = new Product(1L,"test", 10.50, 2000, 1, 1L, "");
+        product = new Product("test", 10.50, 2000, 1, 1L, "");
     }
 
     @AfterEach
@@ -38,4 +38,22 @@ class ProductRepositoryTest {
     void testCheckProductNotExists() {
         assertFalse(productRepository.checkProductExists(product.getId()));
     }
+
+    @Test
+    void testAvailableInDesiredQty() {
+        productRepository.save(product);
+        int quantity = 3;
+
+        assertTrue(productRepository.availableInDesiredQty(product.getId(), quantity));
+    }
+
+    @Test
+    void testNotAvailableInDesiredQty() {
+        product.setQuantity(2);
+        productRepository.save(product);
+        int quantity = 3;
+
+        assertFalse(productRepository.availableInDesiredQty(product.getId(), quantity));
+    }
+
 }

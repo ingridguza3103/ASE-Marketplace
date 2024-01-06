@@ -13,10 +13,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * This class is used to generate and validat JWT tokens
+ */
 @Service
 public class TokenServiceImpl implements TokenService {
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);;
+
+    /**
+     * This method is used to generate a JWT token for a specific user upon successful login or registration
+     * @param user
+     * @return
+     */
     @Override
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
@@ -31,6 +39,12 @@ public class TokenServiceImpl implements TokenService {
                 .compact();
     }
 
+    /**
+     * This method is used to validate a user token
+     * @param token the token to validate
+     * @param user the user to validate it against
+     * @return true if valid, false otherwise
+     */
     @Override
     public boolean validateToken(String token, User user) {
         //extract username from token
@@ -39,6 +53,11 @@ public class TokenServiceImpl implements TokenService {
     }
 
 
+    /**
+     * This method is used to extract the username from the token it is only used by validateToken
+     * @param token the token
+     * @return the extracted username
+     */
     private String getUsernameFromToken(String token) {
         // parse subject from token
         return Jwts.parser()
@@ -48,6 +67,12 @@ public class TokenServiceImpl implements TokenService {
                 .getSubject();
     }
 
+    /**
+     * This method extracts the expiration date from the token and checks if it has expired.
+     * This method is also only used by validateToken.
+     * @param token the token
+     * @return true if expired, false otherwise
+     */
     private boolean isExpired(String token) {
         // parse expiration before token
         Date expiration = Jwts.parser()

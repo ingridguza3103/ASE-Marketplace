@@ -10,16 +10,29 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * This class is used for calling the SQL queries from OrderRepository
+ */
 @Service
-
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
+    /**
+     * fetch all orders from the db
+     * @return the list of all orders
+     */
     @Override
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
+
+    /**
+     * This method is used to place an order (saves it in the db)
+     * @param order the placed order
+     * @return the Order
+     */
     @Override
     public Order placeOrder(Order order) {
         order.setOrderPlaced(LocalDateTime.now());

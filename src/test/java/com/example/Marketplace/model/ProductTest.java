@@ -12,7 +12,14 @@ class ProductTest {
 
     @BeforeEach
     void setUp() {
-        product = new Product(1L,"test", 10.50, 2000, 1, 1L, "");
+        product = new Product();
+        product.setId(1L);
+        product.setProductName("test");
+        product.setPrice(10.50);
+        product.setQuantity(2000);
+        product.setCategoryId(1);
+        product.setSellerId(1L);
+        product.setPictureUrl("");
 
     }
 

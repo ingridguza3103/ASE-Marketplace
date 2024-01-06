@@ -17,11 +17,12 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String username, String pw) {
-        this.id = id;
+    public User(String username, String pw) {
         this.username = username;
         this.pw = pw;
     }
+
+
 
 
     public String getUsername() {

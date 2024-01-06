@@ -34,8 +34,8 @@ public class ProductServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockProduct = new Product(1L, "testProduct", 12.50, 3, 1, 101L, "");
-
+        mockProduct = new Product("testProduct", 12.50, 3, 1, 101L, "");
+        mockProduct.setId(1L);
     }
 
     @AfterEach
@@ -111,6 +111,26 @@ public class ProductServiceTest {
         // Assert
         // Verify that the delete method is not called with the expected product
         verify(productRepository, times(0)).delete(mockProduct);
+    }
+
+    @Test
+    public void testEnoughQuantity() {
+        int quantity = 3;
+        when(productRepository.availableInDesiredQty(mockProduct.getId(), quantity)).thenReturn(true);
+
+        boolean isAvailable = productService.enoughQuantity(mockProduct.getId(), quantity);
+
+        assertTrue(isAvailable);
+    }
+
+    @Test
+    public void testNotEnoughQuantity() {
+        int quantity = 3;
+        when(productRepository.availableInDesiredQty(mockProduct.getId(), quantity)).thenReturn(false);
+
+        boolean isAvailable = productService.enoughQuantity(mockProduct.getId(), quantity);
+
+        assertFalse(isAvailable);
     }
 
 }

@@ -2,6 +2,9 @@ package com.example.Marketplace.model;
 
 import jakarta.persistence.*;
 
+/**
+ * This class is used to represent a product in the web-shop with all the relevant information
+ **/
 @Entity
 @Table(name="products")
 public class Product {
@@ -20,8 +23,7 @@ public class Product {
 
     public Product(){}
 
-    public Product(Long id, String productName, double price, int quantity, int categoryId, Long sellerId, String pictureUrl) {
-        this.id = id;
+    public Product(String productName, double price, int quantity, int categoryId, Long sellerId, String pictureUrl) {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
@@ -29,6 +31,7 @@ public class Product {
         this.sellerId = sellerId;
         this.pictureUrl = pictureUrl;
     }
+
 
 
 

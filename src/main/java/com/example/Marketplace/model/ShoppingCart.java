@@ -2,6 +2,7 @@ package com.example.Marketplace.model;
 
 
 import com.example.Marketplace.service.OrderService;
+import com.example.Marketplace.service.ProductService;
 import com.example.Marketplace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,13 +25,32 @@ public class ShoppingCart {
     OrderService orderService;
     @Autowired
     UserService userService;
+    @Autowired
+    ProductService productService;
 
     public ShoppingCart(){}
 
+    /**
+     * This method adds an item to the ShoppingCart
+     * @param product the product
+     * @param quantity the desired quantity
+     */
     public void addItem(Product product, int quantity) {
-        products.put(product, products.getOrDefault(product, 0) + quantity);
+        // check if product available in the desired quantity
+        if (productService.enoughQuantity(product.getId(), quantity)) {
+            products.put(product, products.getOrDefault(product, 0) + quantity);
+        } else { // not enough quantity left
+            // TODO: print not enough in stock to the user
+            return;
+        }
+
     }
 
+    /**
+     * This method removes an item to the ShoppingCart
+     * @param product the product
+     * @param quantity the quantity
+     */
     public void removeItem(Product product, int quantity) {
         int currentQuantity = products.getOrDefault(product, 0);
 
@@ -45,6 +65,12 @@ public class ShoppingCart {
         return products;
     }
 
+    /**
+     * This method contains the logic that is performed when the User hits check out in the shopping cart.
+     * The ShoppingCart is converted to an Order object and the sellers of the products that are ordered get notified
+     * with the buyer information and the ordered quantity.
+     * @return the resulting Order object as a confirmation
+     */
     public Order onCheckOut() {
         // TODO: Authenticate User
         Order order = new Order();

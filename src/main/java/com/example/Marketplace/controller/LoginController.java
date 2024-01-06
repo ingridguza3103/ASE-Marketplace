@@ -37,6 +37,7 @@ public class LoginController {
         return "my-account";
     }
 
+    // TODO: Map to a index or something else, also requires update on the client-side
     @GetMapping("/login_success")
     public String showLoginSuccessPage() {
         return "login_success"; // Thymeleaf will resolve this to "templates/login_success.html"
@@ -67,7 +68,7 @@ public class LoginController {
 
     }
 
-
+    // TODO: Map to a index or something else, also requires update on the client-side
     @GetMapping("/registration_success")
     public String showRegisterSuccessPage() {
         return "registration_success"; // Thymeleaf will resolve this to "templates/login_success.html"
