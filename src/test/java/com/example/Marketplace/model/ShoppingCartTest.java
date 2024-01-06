@@ -1,7 +1,7 @@
 package com.example.Marketplace.model;
 
 import com.example.Marketplace.repository.ProductRepository;
-import com.example.Marketplace.service.ProductService;
+
 import com.example.Marketplace.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,15 +12,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.parameters.P;
+
 
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyLong;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

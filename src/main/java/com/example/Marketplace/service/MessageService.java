@@ -10,7 +10,7 @@ public interface MessageService {
 
     List<Message> getChat(Long senderId, Long recipientId);
 
-    void saveMessage(Message message);
+    Message saveMessage(Message message);
 
     List<Message> restoreChatSession(Long sessionId);
 
