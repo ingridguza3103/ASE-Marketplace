@@ -25,7 +25,7 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Enable SockJS fallback for browsers that don't support WebSocket
+        // Enable SockJS fallback for browsers that don't support WebSocket yet
         registry.addEndpoint("/chat").withSockJS();
     }
 }
