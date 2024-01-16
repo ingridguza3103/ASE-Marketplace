@@ -5,14 +5,15 @@ import com.example.Marketplace.model.User;
 import com.example.Marketplace.service.ProductService;
 import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
+import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents the REST endpoint for products
@@ -27,8 +28,53 @@ public class ProductController {
 
     @Autowired
     TokenService tokenService;
-    // TODO: implement!!
 
+    /**
+     * Get mapping to retrieve all products
+     * @return the list of all products
+     */
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts() {
+        List<Product> products = productService.getAllProducts();
+        return ResponseEntity.ok().body(products);
+    }
+
+    /**
+     * Get mapping to retrieve a product by its id
+     * @param productId the product id
+     * @return ResponseEntity<Product> if product exists, ResponseEntity<String> else
+     */
+    @GetMapping("/products/{productId}")
+    public ResponseEntity<?> getProduct(@PathVariable String productId) {
+        Long id = Long.parseLong(productId);
+        Product product;
+        try {
+            product = productService.getProductById(id);
+
+            return ResponseEntity.ok().body(product);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
+
+            return ResponseEntity.badRequest().body("product_not_found");
+        }
+    }
+
+    /**
+     * Get mapping to retrieve all products uploaded by a user
+     * @param sellerId the user id
+     * @return ResponseEntity<List<Product>> if user has products, ResponseEntity<String> else
+     */
+    @GetMapping("/products/{sellerId}")
+    public ResponseEntity<?> getUserProducts(@PathVariable String sellerId) {
+        Long id = Long.parseLong(sellerId);
+        ArrayList<Product> userProducts = (ArrayList<Product>) productService.getProductsBySellerId(id);
+        if (!userProducts.isEmpty()) {
+            return ResponseEntity.ok().body(userProducts);
+        } else {
+            return ResponseEntity.badRequest().body("no_products_for_userId");
+        }
+
+    }
 
     /**
      * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
