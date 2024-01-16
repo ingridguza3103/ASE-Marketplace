@@ -133,4 +133,18 @@ public class ProductServiceTest {
         assertFalse(isAvailable);
     }
 
+
+    @Test
+    public void testGetProductsBySellerId() {
+        ArrayList<Product> userProducts = new ArrayList<>();
+        userProducts.add(mockProduct);
+
+        when(productRepository.findBySellerId(mockProduct.getSellerId())).thenReturn(userProducts);
+
+        ArrayList<Product> retrievedProducts = (ArrayList<Product>) productService.getProductsBySellerId(mockProduct.getSellerId());
+
+        assertEquals(userProducts, retrievedProducts);
+
+    }
+
 }

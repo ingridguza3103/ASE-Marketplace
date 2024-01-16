@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,6 +40,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+    }
+
+    @Override
+    public List<Product> getProductsBySellerId(long sellerId) {
+        return productRepository.findBySellerId(sellerId);
     }
 
     /**
