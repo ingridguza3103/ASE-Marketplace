@@ -1,6 +1,7 @@
 package com.example.Marketplace.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * This class is used for the primary key of OrderItem in order to map that OrderItem to the correct Product and the
  * correct Order.
  */
+@Embeddable
 public class OrderItemPK implements Serializable {
 
     public OrderItemPK(){}

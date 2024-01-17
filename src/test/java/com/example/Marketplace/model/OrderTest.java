@@ -26,6 +26,7 @@ class OrderTest {
     void setUp() {
         order = new Order();
         order.setId(1L);
+        order.setUserId(2L);
         products = new ArrayList<>();
         item1 = new OrderItem(order, new Product("test", 10.50, 2000, 1, 1L, ""), 2);
         item2 = new OrderItem(order, new Product("test2", 8.00, 2000, 1, 2L, ""), 3);
@@ -69,6 +70,19 @@ class OrderTest {
     @Test
     void testGetId() {
         assertEquals(1, order.getId());
+    }
+
+    @Test
+    void testSetUserId() {
+        long id = 3;
+        order.setUserId(id);
+
+        assertEquals(id, order.getUserId());
+    }
+
+    @Test
+    void testGetUserId() {
+        assertEquals(2, order.getUserId());
     }
 
     @Test

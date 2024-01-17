@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -87,5 +88,31 @@ public class OrderServiceTest {
         when(orderRepository.findAll()).thenReturn(mockOrders);
         List<Order> orders = orderService.getAllOrders();
         assertTrue(orders.contains(mockOrder), "check mockOrder contained in List");
+    }
+
+    @Test
+    public void testGetUserOrders() {
+        List<Order> mockOrders = new ArrayList<>();
+        Long id = 3L;
+
+        mockOrder.setUserId(id);
+        mockOrders.add(mockOrder);
+
+        when(orderRepository.findAllByUserId(id)).thenReturn(mockOrders);
+
+        List<Order> orders = orderService.getUserOrders(id);
+
+        assertEquals(mockOrders, orders);
+
+    }
+    @Test
+    public void testGetUserOrdersNoOrders() {
+
+        when(orderRepository.findAllByUserId(anyLong())).thenReturn(new ArrayList<>());
+
+        List<Order> orders = orderService.getUserOrders(2L);
+
+        assertTrue(orders.isEmpty());
+
     }
 }

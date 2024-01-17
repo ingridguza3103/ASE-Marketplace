@@ -1,10 +1,7 @@
 package com.example.Marketplace.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
 import java.time.LocalDate;
@@ -20,9 +17,13 @@ import java.util.List;
 @Table(name="orders")
 public class Order {
     @Id
+    @GeneratedValue
     private Long id;
+
+    @Column(name = "user_id")
+    private Long userId;
     @JsonManagedReference
-    @OneToMany(mappedBy = "orderItemPK.order")
+    @OneToMany(mappedBy = "orderItemPK.order", cascade = CascadeType.ALL)
     @Valid
     private List<OrderItem> products = new ArrayList<>();
 
@@ -53,6 +54,16 @@ public class Order {
     public Long getId() {
         return this.id;
     }
+
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
 
     public List<OrderItem> getProducts() {
         return products;
