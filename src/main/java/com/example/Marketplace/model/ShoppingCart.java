@@ -19,6 +19,7 @@ import java.util.Map;
  */
 @Component
 public class ShoppingCart {
+    private Long userId;
     private Map<Product, Integer> products = new HashMap<>();
     // TODO: Think about having the Buyer User instance here
     @Autowired
@@ -42,6 +43,7 @@ public class ShoppingCart {
         } else { // not enough quantity left
             // TODO: print not enough in stock to the user
             return;
+
         }
 
     }
@@ -72,8 +74,9 @@ public class ShoppingCart {
      * @return the resulting Order object as a confirmation
      */
     public Order onCheckOut() {
-        // TODO: Authenticate User
+        // TODO: Authenticate User tbd in controller
         Order order = new Order();
+        orderService.initiateOrder(order);
 
         // iterate over hashmap and create OrderItem for each product and add it to the order
         for (Map.Entry<Product, Integer> item : products.entrySet()) {

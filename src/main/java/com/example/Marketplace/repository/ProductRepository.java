@@ -28,4 +28,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     @Query("SELECT COUNT(p) > 0 From Product p WHERE p.id = :id AND p.quantity >= :qty")
     boolean availableInDesiredQty(Long id, int qty);
+
+    /**
+     * This method queries the database for a given user id and returns the list of products they uploaded
+     * @param sellerId id of the seller
+     * @return the list of products uploaded by this user
+     */
+    @Query("SELECT p FROM Product p WHERE p.sellerId = :sellerId")
+    List<Product> findBySellerId(long sellerId);
 }

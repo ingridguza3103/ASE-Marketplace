@@ -10,6 +10,9 @@ public interface OrderService {
 
     List<Order> getAllOrders();
 
+    List<Order> getUserOrders(Long userId);
+
+    Order initiateOrder(Order order);
     Order placeOrder(Order order);
 
     /**

@@ -9,6 +9,8 @@ public interface ProductService {
 
     Product getProductById(long id);
 
+    List<Product> getProductsBySellerId(long sellerId);
+
     boolean uploadProduct(Product product);
 
     void removeProduct(Product product);

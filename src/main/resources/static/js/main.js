@@ -29,7 +29,7 @@
         },
     };
 
-    function submitForm(action) {
+    function submitUserForm(action) {
         // Change the form method dynamically based on the button clicked
         var form = document.getElementById('loginform');
         form.action = action;
@@ -118,7 +118,19 @@
             });
     }
 
-    window.submitForm = submitForm;
+    window.submitUserForm = submitUserForm;
+
+    /**
+     * This function is used to retrieve cookies - mainly to get the token cookie to be able to pass the token with post requests
+     * for authentication
+     * @param name the name of the cookie (mainly "token")
+     * @returns {string} the JWT token of the user
+     */
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
     function parallax() {
         $('.bg--parallax').each(function() {

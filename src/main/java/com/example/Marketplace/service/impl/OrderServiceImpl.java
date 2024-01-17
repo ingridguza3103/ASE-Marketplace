@@ -28,6 +28,21 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findAll();
     }
 
+    @Override
+    public List<Order> getUserOrders(Long userId) {
+        return orderRepository.findAllByUserId(userId);
+    }
+
+    /**
+     * This method is used to instantiate an order (saves the empty order in the db) in order to properly assign OrderItems
+     * @param order the order to save
+     * @return the Order
+     */
+    @Override
+    public Order initiateOrder(Order order) {
+        return orderRepository.save(order);
+    }
+
     /**
      * This method is used to place an order (saves it in the db)
      * @param order the placed order
