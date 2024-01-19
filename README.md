@@ -5,7 +5,7 @@ ASE PROJECT
 <ol>
     <li>In application.properties ensure that the right database configuration (under the comment "config for docker") is selected and the other commented out</li>
     <li>RUN mvn clean install</li> 
-    <li>RUN IN TERMINAL: docker-compose --build </li>
+    <li>RUN IN TERMINAL: docker-compose up --build </li>
 </ol>
 
 How to connect to the database:
