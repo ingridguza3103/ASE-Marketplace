@@ -29,6 +29,11 @@ public class ProductController {
     @Autowired
     TokenService tokenService;
 
+    @GetMapping("/upload")
+    public String showUploadForm(Model model){
+        return "product-upload";
+    }
+
     /**
      * Get mapping to retrieve all products
      * @return the list of all products
