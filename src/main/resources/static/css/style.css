@@ -17451,3 +17451,17 @@ html .bg--parallax {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#label_upload_btn {
+  font-weight: 600;
+}
+
+#cancel_upload_btn{
+  background-color: black;
+  color: #fcb800;
+}
+
+#cancel_upload_btn:hover{
+  background-color: #fcb800;
+  color: white;
+}

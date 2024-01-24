@@ -1014,4 +1014,13 @@
         $('body').addClass('loaded');
         subscribePopup();
     });
+
+    const pic_upload_btn = document.getElementById('pic_upload_btn');
+
+    const picture_chosen = document.getElementById('picture_chosen');
+
+    pic_upload_btn.addEventListener('change', function(){
+        picture_chosen.textContent = this.files[0].name
+    });
+
 })(jQuery);
