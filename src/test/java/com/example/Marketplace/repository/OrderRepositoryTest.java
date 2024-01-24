@@ -45,8 +45,8 @@ class OrderRepositoryTest {
         //order.setId(1L);
         order.setUserId(userId);
         products = new ArrayList<>();
-        Product product1 =  new Product("test", 10.50, 2000, 1, 1L, "");
-        Product product2 = new Product("test2", 8.00, 2000, 1, 2L, "");
+        Product product1 =  new Product("test", 10.50, 2000, 1, 1L, "", "");
+        Product product2 = new Product("test2", 8.00, 2000, 1, 2L, "", "");
 
         productRepository.save(product1);
         productRepository.save(product2);

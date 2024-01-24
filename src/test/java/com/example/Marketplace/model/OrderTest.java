@@ -28,8 +28,8 @@ class OrderTest {
         order.setId(1L);
         order.setUserId(2L);
         products = new ArrayList<>();
-        item1 = new OrderItem(order, new Product("test", 10.50, 2000, 1, 1L, ""), 2);
-        item2 = new OrderItem(order, new Product("test2", 8.00, 2000, 1, 2L, ""), 3);
+        item1 = new OrderItem(order, new Product("test", 10.50, 2000, 1, 1L, "", ""), 2);
+        item2 = new OrderItem(order, new Product("test2", 8.00, 2000, 1, 2L, "", ""), 3);
         products.add(item1);
         products.add(item2);
         order.setProducts(products);
@@ -106,7 +106,7 @@ class OrderTest {
     @Test
     void testAddProducts() {
         // old size of products is 2 in this test one item is added therefore we assert the new size to 3
-        OrderItem addItem = new OrderItem(order, new Product("add", 3.00, 1000, 3, 34L, ""), 1);
+        OrderItem addItem = new OrderItem(order, new Product("add", 3.00, 1000, 3, 34L, "", ""), 1);
 
         order.addProducts(addItem);
 

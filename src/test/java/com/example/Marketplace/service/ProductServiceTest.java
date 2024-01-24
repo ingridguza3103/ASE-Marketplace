@@ -34,7 +34,7 @@ public class ProductServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockProduct = new Product("testProduct", 12.50, 3, 1, 101L, "");
+        mockProduct = new Product("testProduct", 12.50, 3, 1, 101L, "", "");
         mockProduct.setId(1L);
     }
 

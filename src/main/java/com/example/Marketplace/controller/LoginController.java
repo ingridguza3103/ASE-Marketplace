@@ -29,7 +29,7 @@ public class LoginController {
     /**
      * GET request handler for login loads the login form
      * @param model the model
-     * @return index.html
+     * @return my-account.html
      */
     @GetMapping("/login")
     public String login(Model model){
