@@ -125,21 +125,31 @@
 
         // Create FormData object to easily construct form data
         const formData = new FormData(form);
-
+        const token = getCookie('token');
+        const sessionId = getCookie('sessionId');
         // Make a POST request to the backend endpoint
         fetch('/products', {
             method: 'POST',
-            body: formData,
+            body: JSON.stringify(formData),
+            credentials: 'include',  // Include cookies
+            headers: {
+                'Cookie': `${token}; ${sessionId}`,  // Set your custom cookies
+            },
         })
             .then(response => {
                 if (!response.ok) {
+                    console.log(response.status);
                     throw new Error('Network response was not ok');
                 }
                 return response.json(); // Assuming the backend returns JSON data
             })
             .then(data => {
                 // Handle the response from the backend
-                console.log('Success:', data);
+                if(data.trim() === "upload_success") {
+                    window.location.href ="/";
+                    console.log('Success:', data);
+                }
+
             })
             .catch(error => {
                 // Handle errors during the fetch
