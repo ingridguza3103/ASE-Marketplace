@@ -7,6 +7,7 @@ import com.example.Marketplace.repository.UserRepository;
 import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -98,7 +99,7 @@ public class LoginControllerTest {
 
         // Mock userService to return true indicating successful login
         when(userService.loginUser(any(User.class))).thenReturn(true);
-        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString()))
+        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString(), any(HttpSession.class)))
                 .thenReturn(ResponseEntity.ok().headers(header).body("login_success"));
 
         // Perform the login test
@@ -203,7 +204,7 @@ public class LoginControllerTest {
 
         // Mock userService to return true indicating successful login
         when(userService.registerUser(any(User.class))).thenReturn(true);
-        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString()))
+        when(userService.createTokenAndCookie(any(User.class), any(HttpServletResponse.class), anyString(), any(HttpSession.class)))
                 .thenReturn(ResponseEntity.ok().headers(header).body("registration_success"));
 
         // Perform the login test
