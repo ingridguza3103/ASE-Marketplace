@@ -7,6 +7,7 @@ import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
 import exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -41,8 +44,15 @@ public class ProductController {
     @GetMapping("/upload")
     public String showUploadForm(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
         Product product = new Product();
-        product.setSellerId(user.getId());
-        model.addAttribute("product", new Product());
+        HttpSession session = getSession(getSessionId());
+        if (session != null) {
+            // Retrieve user information from the session
+            Long userId = (Long) session.getAttribute("userId");
+            System.out.println("SELLER ID 1: " + userId);
+            String username = (String) session.getAttribute("username");
+            product.setSellerId(userId);
+        }
+        model.addAttribute("product", product);
         /*HttpHeaders headers = new HttpHeaders();
         //add all existing headers in new headers
         String result = null;
@@ -105,7 +115,10 @@ public class ProductController {
         if (product != null) {
             // extract user from product
             System.out.println("PROD: " + product);
+            HttpSession session = getSession(getSessionId());
+
             User user = userService.getUser(product.getSellerId());
+            System.out.println("SELLER ID 2: " + product.getSellerId());
 
             // split user token to get rid of "Bearer"
             //String userToken = token.split(" ")[1];
@@ -133,12 +146,47 @@ public class ProductController {
             return ResponseEntity.badRequest().body("upload_failed_product_null");
         }
 
+
     }
 
+    private HttpSession getSession(String sessionId) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        return request.getSession(false); // Passing false to create a new session only if one doesn't exist
+    }
+
+    private String getSessionId(){
+        return RequestContextHolder.currentRequestAttributes().getSessionId();
+    }
 }
+
+
 /**
  * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
  *
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ * <p>
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ * <p>
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ * <p>
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ * <p>
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
  * @param product the product to upload
  * @param token the user token for validation
  * @param model the model

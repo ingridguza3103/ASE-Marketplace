@@ -752,7 +752,7 @@
                 <h3>Sell on Reuse</h3>
             </div>
             <div class="ps-section__content">
-                <form class="ps-form--checkout" id="uploadform" action="https://nouthemes.net/html/martfury/index.html" method="post">
+                <form class="ps-form--checkout" id="uploadform" th:object="${product}" th:action="@{/products}" method="post">
                     <div class="ps-form__content">
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 ">
@@ -760,19 +760,19 @@
                                     <h3 class="ps-form__heading">Product Information</h3>
                                     <div class="form-group">
                                         <label>Product name</label>
-                                        <input class="form-control" type="text" placeholder="" required>
+                                        <input class="form-control" th:field="*{productName}" type="text" placeholder="" required>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Price (per piece)</label>
-                                                <input class="form-control" type="number" min="0" step="0.01" placeholder="0.00" required>
+                                                <input class="form-control" th:field="*{price}" type="number" min="0" step="0.01" placeholder="0.00" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Quantity</label>
-                                                <input class="form-control" type="number" min="1" step="1" placeholder="1" required>
+                                                <input class="form-control" th:field="*{quantity}" type="number" min="1" step="1" placeholder="1" required>
                                             </div>
                                         </div>
                                     </div>
@@ -783,16 +783,16 @@
                                                 <form class="ps-form--quick-search" action="https://nouthemes.net/html/martfury/index.html" method="get">
                                                     <div class="form-group--icon"><i class="icon-chevron-down"></i>
                                                         <select class="form-control" required>
-                                                            <option value="0" selected="selected">Choose a category</option>
-                                                            <option class="level-0" value="books-media">Books & Media</option>
-                                                            <option class="level-0" value="electrical-appliances">Electrical & Appliances</option>
-                                                            <option class="level-0" value="cars-motocycles">Cars & Motocycles</option>
-                                                            <option class="level-0" value="electronics">Electronics</option>
-                                                            <option class="level-0" value="fashion-apparel">Fashion & Apparel</option>
-                                                            <option class="level-0" value="leisure">Leisure</option>
-                                                            <option class="level-0" value="pet-supplies">Pet Supplies</option>
-                                                            <option class="level-0" value="riding-tools">Riding Stuff & Tools</option>
-                                                            <option class="level-0" value="toys-games">Toys & Games</option>
+                                                            <option value="0" th:field="*{categoryId}" selected="selected">Choose a category</option>
+                                                            <option class="level-0" value="0">Books & Media</option>
+                                                            <option class="level-0" value="1">Electrical & Appliances</option>
+                                                            <option class="level-0" value="2">Cars & Motocycles</option>
+                                                            <option class="level-0" value="3">Electronics</option>
+                                                            <option class="level-0" value="4">Fashion & Apparel</option>
+                                                            <option class="level-0" value="5">Leisure</option>
+                                                            <option class="level-0" value="6">Pet Supplies</option>
+                                                            <option class="level-0" value="7">Riding Stuff & Tools</option>
+                                                            <option class="level-0" value="8">Toys & Games</option>
                                                         </select>
                                                     </div>
                                                 </form>
@@ -801,7 +801,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Please upload a picture of your product</label>
-                                                <input class="form-control" type="file" id="pic_upload_btn" name="pic_upload_btn" accept="image/*" hidden required>
+                                                <input class="form-control" th:field="*{pictureUrl}" type="file" id="pic_upload_btn" name="pic_upload_btn" accept="image/*" hidden required>
                                                 <label for="pic_upload_btn" class="ps-btn" id="label_upload_btn">Choose picture</label>
                                                 <span id="picture_chosen">No picture chosen</span>
                                             </div>
@@ -809,13 +809,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <input class="form-control" type="text" placeholder="" required>
+                                        <input class="form-control" th:field="*{description}" type="text" placeholder="" required>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group submtit">
-                                                <button type="button" onclick="/*to do*/" class="ps-btn">Upload</button>
-                                                <button type="button" id="cancel_upload_btn" onclick="/*to do*/" class="ps-btn">Cancel</button>
+                                                <button type="submit" th:href class="ps-btn">Upload</button>
+                                                <button type="button" id="cancel_upload_btn" onclick="window.history.back();" class="ps-btn">Cancel</button>
                                             </div>
                                             <!--<div class="form-group submtit">
                                                 <button type="button" onclick="/*to do*/" class="ps-btn ps-btn--fullwidth--reverse">Cancel</button>
