@@ -132,7 +132,7 @@ public class ProductController {
             // authenticate the user, if it token valid add product to db
             if (tokenService.validateToken(userToken, user)) {
                 // save the product to the database
-                product.setId(1000000L);
+                //product.setId(1000000L);
                 productService.uploadProduct(product);
                 // return successful upload of product
                 return ResponseEntity.ok().body("upload_success");

@@ -119,6 +119,36 @@
 
     window.submitUserForm = submitUserForm;
 
+    function submitUploadForm() {
+        // Get the form element
+        const form = document.getElementById('uploadform');
+
+        // Create FormData object to easily construct form data
+        const formData = new FormData(form);
+
+        // Make a POST request to the backend endpoint
+        fetch('/products', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Assuming the backend returns JSON data
+            })
+            .then(data => {
+                // Handle the response from the backend
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                // Handle errors during the fetch
+                console.error('Error:', error);
+            });
+    }
+
+    window.submitUploadForm = submitUploadForm;
+
     /**
      * This function is used to retrieve cookies - mainly to get the token cookie to be able to pass the token with post requests
      * for authentication
