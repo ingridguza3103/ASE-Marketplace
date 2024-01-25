@@ -5,6 +5,7 @@ import com.example.Marketplace.model.User;
 import exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -24,8 +25,7 @@ public interface UserService {
      * @param responseBody the string that should be added to the response body
      * @return the ResponseEntity after token is created and stored in cookie.
      */
-   ResponseEntity<String> createTokenAndCookie(User loginUser, HttpServletResponse response, String responseBody);
-
+    public ResponseEntity<String> createTokenAndCookie(User loginUser, HttpServletResponse response, String responseBody, HttpSession session);
     /**
      * This method is used to perform the registration authentication
      * @param user the user to be logged in
@@ -37,4 +37,5 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+    void clearTokenCookie(HttpServletResponse response);
 }

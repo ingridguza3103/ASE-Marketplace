@@ -62,8 +62,7 @@
                     //document.cookie = `token=${token}; path=/; secure; HttpOnly`;
 
                     //console.log("Current cookies: " + document.cookie);
-                    window.location.href = '/'
-                    ;  // Redirect to success page
+                    window.location.href = '/';  // Redirect to success page
                 } else {
 
                     if (data.trim() === 'registration_failed') {

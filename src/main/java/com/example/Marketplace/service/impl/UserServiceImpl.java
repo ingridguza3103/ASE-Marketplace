@@ -7,6 +7,7 @@ import com.example.Marketplace.service.UserService;
 import exception.ResourceNotFoundException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * This class is used to hold the functionality for the LoginController
@@ -72,7 +74,7 @@ public class UserServiceImpl implements UserService {
      * @return the ResponseEntity after token is created and stored in cookie.
      */
     @Override
-    public ResponseEntity<String> createTokenAndCookie(User loginUser, HttpServletResponse response, String responseBody) {
+    public ResponseEntity<String> createTokenAndCookie(User loginUser, HttpServletResponse response, String responseBody, HttpSession session) {
 
 
         String userToken = tokenService.generateToken(loginUser);
@@ -90,10 +92,36 @@ public class UserServiceImpl implements UserService {
         cookie.setHttpOnly(true);
         response.addCookie(cookie);
 
+        // create session cookie
+
+        // Generate a session identifier
+        String sessionIdentifier = UUID.randomUUID().toString();
+        // Store user information in the session (you may store more user-related data)
+        session.setAttribute("userId", loginUser.getId());
+        session.setAttribute("username", loginUser.getUsername());
+
+        // Set the session identifier as a cookie in the response
+        Cookie sessionCookie = new Cookie("sessionId", sessionIdentifier);
+        sessionCookie.setPath("/");
+        response.addCookie(sessionCookie);
+
+
         // TODO: if input correct route to homepage
         System.out.println(userToken);
 
         return ResponseEntity.ok().headers(header).body(responseBody);
+    }
+
+    /**
+     * This method invalidates the token
+     * @param response the response
+     */
+    @Override
+    public void clearTokenCookie(HttpServletResponse response) {
+        Cookie cookie = new Cookie("token", null); // set cookie value to null
+        cookie.setMaxAge(0); // set the cookie's max age to 0, effectively deleting it
+        cookie.setPath("/");
+        response.addCookie(cookie);
     }
 
     /**
@@ -128,4 +156,6 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+
 }
