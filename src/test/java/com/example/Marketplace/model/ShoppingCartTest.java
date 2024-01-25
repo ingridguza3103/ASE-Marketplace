@@ -49,7 +49,7 @@ class ShoppingCartTest {
 
     @Test
     void testAddItemWithEnoughQuantity() {
-        Product product = new Product("Test", 10.3, 2000, 2, 3L, "");
+        Product product = new Product("Test", 10.3, 2000, 2, 3L, "", "");
         int quantity = 5;
 
         products.put(product, quantity);
@@ -63,7 +63,7 @@ class ShoppingCartTest {
 
     @Test
     void testAddItemWithInsufficientQuantity() {
-        Product product = new Product("Test", 10.3, 2000, 2, 3L, "");
+        Product product = new Product("Test", 10.3, 2000, 2, 3L, "", "");
         int quantity = 10;
 
         products.put(product, quantity);
@@ -76,7 +76,7 @@ class ShoppingCartTest {
 
     @Test
     void testRemoveItem() {
-        Product add = new Product("test", 2.80, 2000, 1, 34L, "");
+        Product add = new Product("test", 2.80, 2000, 1, 34L, "", "");
         int qty = 3;
 
         when(productService.enoughQuantity(add.getId(), qty)).thenReturn(true);
