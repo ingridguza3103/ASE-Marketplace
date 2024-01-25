@@ -76,7 +76,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response) {
+    public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response, HttpSession session) {
         // check if user already exists and only save if not
         if (user.getUsername().contains(",") && user.getPw().contains(",")) {
             user.setUsername(user.getUsername().split(",")[1]);
@@ -87,7 +87,7 @@ public class LoginController {
 
         if (isRegistered) {
             // create token and cookie and add it to the response
-            return userService.createTokenAndCookie(user, response, "registration_success");
+            return userService.createTokenAndCookie(user, response, "registration_success", session);
         } else {
             return ResponseEntity.status(401).body("registration_failed"); // Return to registration form with error message
         }
