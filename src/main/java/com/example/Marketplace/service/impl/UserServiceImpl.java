@@ -113,15 +113,21 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * This method invalidates the token
+     * This method invalidates the token and the session
      * @param response the response
      */
     @Override
     public void clearTokenCookie(HttpServletResponse response) {
+        // clear the token cookie
         Cookie cookie = new Cookie("token", null); // set cookie value to null
         cookie.setMaxAge(0); // set the cookie's max age to 0, effectively deleting it
         cookie.setPath("/");
         response.addCookie(cookie);
+        // clear the session cookie
+        Cookie sessioncookie = new Cookie("sessionId", null); // set cookie value to null
+        sessioncookie.setMaxAge(0); // set the cookie's max age to 0, effectively deleting it
+        sessioncookie.setPath("/");
+        response.addCookie(sessioncookie);
     }
 
     /**
