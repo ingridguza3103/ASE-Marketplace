@@ -274,7 +274,7 @@
 
                             </ul>
                         </div>
-                    </div><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a>
+                    </div><a class="ps-logo" th:href="@{/}"><img th:src="@{img/logo_light.png}" alt="" /></a>
                 </div>
                 <div class="header__center">
                     <form class="ps-form--quick-search" action="https://siternet.at" method="get">
@@ -427,11 +427,11 @@
 
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-bag2"></i></div>
-                            <div class="ps-block__right"><a th:href="@{my-account.html}">Cart</a><a th:href="@{my-account.html}">Checkout</a></div>
+                            <div class="ps-block__right"><a th:href="@{/cart}">Cart</a><a th:href="@{/cart}">Checkout</a></div>
                         </div>
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
+                            <div class="ps-block__right"><a th:href="@{/login}">Login/Register</a><a th:href="@{/logout}">Logout</a></div>
                         </div>
                     </div>
                 </div>
@@ -722,15 +722,15 @@
     <header class="header header--mobile" data-sticky="true">
 
         <div class="navigation--mobile">
-            <div class="navigation__left"><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
+            <div class="navigation__left"><a class="ps-logo" th:href="@{/}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
             <div class="navigation__right">
                 <div class="header__actions">
                     <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
 
                     </div>
                     <div class="ps-block--user-header">
-                        <div class="ps-block__left"><a th:href="@{my-account.html}"><i class="icon-user"></i></a></div>
-                        <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
+                        <div class="ps-block__left"><a th:href="@{/login}"><i class="icon-user"></i></a></div>
+                        <div class="ps-block__right"><a th:href="@{/login}">Login</a><a th:href="@{/login}">Register</a></div>
                     </div>
                 </div>
             </div>
@@ -748,7 +748,7 @@
         <div class="ps-breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a th:href="@{index.html}">Home</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
                     <li><a th:href="@{shop-default.html}">Shop</a></li>
                     <li>Whishlist</li>
                 </ul>
@@ -933,7 +933,7 @@
                     <ul class="ps-list--link">
                         <li><a th:href="@{our-press.html}">Our Press</a></li>
                         <li><a th:href="@{checkout.html}">Checkout</a></li>
-                        <li><a th:href="@{my-account.html}">My account</a></li>
+                        <li><a th:href="@{/login}">My account</a></li>
                         <li><a th:href="@{shop.html}">Shop</a></li>
                     </ul>
                 </aside>

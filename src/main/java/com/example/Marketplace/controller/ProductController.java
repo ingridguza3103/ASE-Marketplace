@@ -29,6 +29,11 @@ public class ProductController {
     @Autowired
     TokenService tokenService;
 
+    @GetMapping("/product")
+    public String getProduct() {
+        return "product-multi-vendor";
+    }
+
     /**
      * Get mapping to retrieve all products
      * @return the list of all products
