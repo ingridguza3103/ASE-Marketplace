@@ -6,13 +6,17 @@ import com.example.Marketplace.service.ProductService;
 import com.example.Marketplace.service.TokenService;
 import com.example.Marketplace.service.UserService;
 import exception.ResourceNotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -30,7 +34,23 @@ public class ProductController {
     TokenService tokenService;
 
     @GetMapping("/upload")
-    public String showUploadForm(Model model){
+    public String showUploadForm(@ModelAttribute("user") User user, Model model, HttpServletRequest request){
+        Product product = new Product();
+        product.setSellerId(user.getId());
+        model.addAttribute("product", new Product());
+        /*HttpHeaders headers = new HttpHeaders();
+        //add all existing headers in new headers
+        String result = null;
+        Enumeration<String> names = request.getHeaderNames();
+        while (names.hasMoreElements()) {
+            String name = names.nextElement();
+            if ("Authorization".equalsIgnoreCase(name)) {
+                result = request.getHeader(name);
+                headers.add("Authorization", result);
+            }
+        }
+        //add the headers to the responseEntity along with yourBody object
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body("product_upload"); */
         return "product-upload";
     }
 
@@ -89,18 +109,26 @@ public class ProductController {
      * @return ResponseEntity<String> with status depending on success or failure
      */
     @PostMapping("/products")
-    public ResponseEntity<String> addProduct(@ModelAttribute Product product, @RequestHeader("Authorization") String token, Model model) {
+    public ResponseEntity<String> addProduct(@ModelAttribute Product product, @RequestHeader("Cookie") String token, Model model) {
         // TODO: user authentication
         if (product != null) {
             // extract user from product
+            System.out.println("PROD: " + product);
             User user = userService.getUser(product.getSellerId());
 
             // split user token to get rid of "Bearer"
-            String userToken = token.split(" ")[1];
+            //String userToken = token.split(" ")[1];
+            String userToken = token;
+
+            System.out.println(String.format("UPLOAD: name: %s, price: %f, quantity: %d, " +
+                    "category: %d, picture: %s, description: %s", product.getProductName(),
+                    product.getPrice(), product.getQuantity(), product.getCategoryId(),
+                    product.getPictureUrl(), product.getDescription()));
 
             // authenticate the user, if it token valid add product to db
             if (tokenService.validateToken(userToken, user)) {
                 // save the product to the database
+                product.setId(1000000L);
                 productService.uploadProduct(product);
                 // return successful upload of product
                 return ResponseEntity.ok().body("upload_success");
