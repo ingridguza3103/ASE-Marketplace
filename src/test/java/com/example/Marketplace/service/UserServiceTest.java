@@ -5,6 +5,7 @@ import com.example.Marketplace.repository.UserRepository;
 
 import com.example.Marketplace.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,9 @@ public class UserServiceTest {
 
     @Mock
     private HttpServletResponse response;
+
+    @Mock
+    private HttpSession session;
 
     @BeforeEach
     void setUp() {
@@ -137,7 +141,7 @@ public class UserServiceTest {
                 .body(bodyMessage);
 
         // test
-        ResponseEntity<String> responseEntity = userService.createTokenAndCookie(mockUser, response, bodyMessage);
+        ResponseEntity<String> responseEntity = userService.createTokenAndCookie(mockUser, response, bodyMessage, session);
 
         assertEquals(expectedResponse, responseEntity, "ResponseEntity check");
 

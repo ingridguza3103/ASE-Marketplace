@@ -274,7 +274,7 @@
 
                             </ul>
                         </div>
-                    </div><a class="ps-logo" th:="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a>
+                    </div><a class="ps-logo" th:href="@{/}"><img th:src="@{img/logo_light.png}" alt="" /></a>
                 </div>
                 <div class="header__center">
                     <form class="ps-form--quick-search" action="https://siternet.at" method="get">
@@ -313,7 +313,7 @@
                                     </div>
                                 </div>
                                 <div class="ps-product ps-product--wide ps-product--search-result">
-                                    <div class="ps-product__thumbnail"><a th:="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
+                                    <div class="ps-product__thumbnail"><a th:href="@{product-default.html}"><img th:src="@{img/products/arrivals/1.jpg}" alt="" /></a></div>
                                     <div class="ps-product__content"><a class="ps-product__title" th:href="@{product-default.html}">Apple iPhone Retina 6s Plus 64GB</a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
@@ -431,7 +431,7 @@
                         </div>
                         <div class="ps-block--user-header">
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a th:href="@{my-account.html}">Login</a><a th:href="@{my-account.html}">Register</a></div>
+                            <div class="ps-block__right"><a th:href="@{/login}">Login/Register</a><a th:href="@{/logout}">Logout</a></div>
                         </div>
                     </div>
                 </div>
@@ -722,7 +722,7 @@
     <header class="header header--mobile" data-sticky="true">
 
         <div class="navigation--mobile">
-            <div class="navigation__left"><a class="ps-logo" th:href="@{index.html}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
+            <div class="navigation__left"><a class="ps-logo" th:href="@{/}"><img th:src="@{img/logo_light.png}" alt="" /></a></div>
             <div class="navigation__right">
                 <div class="header__actions">
                     <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
@@ -748,7 +748,7 @@
         <div class="ps-breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a th:href="@{index.html}">Home</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
                     <li>Vendor Store</li>
                 </ul>
             </div>
@@ -786,7 +786,7 @@
                                 </div>
                                 <div class="ps-block__footer">
                                     <p>Call us directly<strong>(+43) 77-637-3300</strong></p>
-                                    <p>or Or if you have any question</p><a class="ps-btn ps-btn--fullwidth" href="#">Contact Seller</a>
+                                    <p>Or if you have any question</p><a class="ps-btn ps-btn--fullwidth" href="#">Contact Seller</a>
                                 </div>
                             </div>
                         </div>
@@ -801,7 +801,7 @@
                                 </ul>
                             </div>
                             <div class="ps-block__right">
-                                <form class="ps-form--search" action="https://nouthemes.net/html/martfury/index.html" method="get">
+                                <form class="ps-form--search" action="https://nouthemes.net/html/martfury//" method="get">
                                     <input class="form-control" type="text" placeholder="Search in this shop">
                                     <button><i class="fa fa-search"></i></button>
                                 </form>
@@ -1814,7 +1814,7 @@
     </div>
     <div class="ps-panel--sidebar" id="search-sidebar">
         <div class="ps-panel__header">
-            <form class="ps-form--search-mobile" action="https://nouthemes.net/html/martfury/index.html" method="get">
+            <form class="ps-form--search-mobile" action="https://nouthemes.net/html/martfury//" method="get">
                 <div class="form-group--nest">
                     <input class="form-control" type="text" placeholder="Search something...">
                     <button><i class="icon-magnifier"></i></button>

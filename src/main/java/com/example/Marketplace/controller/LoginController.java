@@ -5,6 +5,7 @@ import com.example.Marketplace.repository.UserRepository;
 
 import com.example.Marketplace.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,7 @@ public class LoginController {
      * @return index.html if login failed, login_success.html if login succeeded
      */
     @PostMapping("/login")
-    public ResponseEntity<String> login(@ModelAttribute  User user, Model model, HttpServletResponse response) {
+    public ResponseEntity<String> login(@ModelAttribute  User user, Model model, HttpServletResponse response, HttpSession session) {
         if (user.getUsername().contains(",") && user.getPw().contains(",")) {
             user.setUsername(user.getUsername().split(",")[0]);
             user.setPw(user.getPw().split(",")[0]);
@@ -61,7 +62,7 @@ public class LoginController {
 
         if (isLoggedIn) {
             // generate Token and add it in cookie to response
-            return userService.createTokenAndCookie(user, response, "login_success");
+            return userService.createTokenAndCookie(user, response, "login_success", session);
         } else {
             return ResponseEntity.status(401).body("login_failed");
         }
@@ -75,7 +76,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response) {
+    public ResponseEntity<String> registerUser(User user, Model model, HttpServletResponse response, HttpSession session) {
         // check if user already exists and only save if not
         if (user.getUsername().contains(",") && user.getPw().contains(",")) {
             user.setUsername(user.getUsername().split(",")[1]);
@@ -86,12 +87,26 @@ public class LoginController {
 
         if (isRegistered) {
             // create token and cookie and add it to the response
-            return userService.createTokenAndCookie(user, response, "registration_success");
+            return userService.createTokenAndCookie(user, response, "registration_success", session);
         } else {
             return ResponseEntity.status(401).body("registration_failed"); // Return to registration form with error message
         }
 
 
+    }
+
+    /**
+     * POST request handler for logout
+     * @param response HttpServletResponse
+     * @return redirect to the home page or login page
+     */
+    @GetMapping("/logout")
+    public String logout(HttpServletResponse response) {
+        // Clear the authentication token from the response (remove the cookie)
+        userService.clearTokenCookie(response);
+
+        // Redirect to the login page
+        return "redirect:/login";
     }
 
 

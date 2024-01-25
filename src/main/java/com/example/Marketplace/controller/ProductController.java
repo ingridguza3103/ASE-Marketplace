@@ -33,8 +33,13 @@ public class ProductController {
     @Autowired
     TokenService tokenService;
 
+    @GetMapping("/product")
+    public String getProduct() {
+        return "product-multi-vendor";
+    }
+
     @GetMapping("/upload")
-    public String showUploadForm(@ModelAttribute("user") User user, Model model, HttpServletRequest request){
+    public String showUploadForm(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
         Product product = new Product();
         product.setSellerId(user.getId());
         model.addAttribute("product", new Product());
@@ -56,6 +61,7 @@ public class ProductController {
 
     /**
      * Get mapping to retrieve all products
+     *
      * @return the list of all products
      */
     @GetMapping("/products")
@@ -66,6 +72,7 @@ public class ProductController {
 
     /**
      * Get mapping to retrieve a product by its id
+     *
      * @param productId the product id
      * @return ResponseEntity<Product> if product exists, ResponseEntity<String> else
      */
@@ -85,27 +92,11 @@ public class ProductController {
     }
 
     /**
-     * Get mapping to retrieve all products uploaded by a user
-     * @param sellerId the user id
-     * @return ResponseEntity<List<Product>> if user has products, ResponseEntity<String> else
-     */
-    @GetMapping("/products/{sellerId}")
-    public ResponseEntity<?> getUserProducts(@PathVariable String sellerId) {
-        Long id = Long.parseLong(sellerId);
-        ArrayList<Product> userProducts = (ArrayList<Product>) productService.getProductsBySellerId(id);
-        if (!userProducts.isEmpty()) {
-            return ResponseEntity.ok().body(userProducts);
-        } else {
-            return ResponseEntity.badRequest().body("no_products_for_userId");
-        }
-
-    }
-
-    /**
      * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+     *
      * @param product the product to upload
-     * @param token the user token for validation
-     * @param model the model
+     * @param token   the user token for validation
+     * @param model   the model
      * @return ResponseEntity<String> with status depending on success or failure
      */
     @PostMapping("/products")
@@ -121,7 +112,7 @@ public class ProductController {
             String userToken = token;
 
             System.out.println(String.format("UPLOAD: name: %s, price: %f, quantity: %d, " +
-                    "category: %d, picture: %s, description: %s", product.getProductName(),
+                            "category: %d, picture: %s, description: %s", product.getProductName(),
                     product.getPrice(), product.getQuantity(), product.getCategoryId(),
                     product.getPictureUrl(), product.getDescription()));
 
@@ -145,3 +136,51 @@ public class ProductController {
     }
 
 }
+/**
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+ *
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ */
+
+
+/**
+ * Post method to upload a product, performs user authentication and only uploads a product if the token is valid.
+ * @param product the product to upload
+ * @param token the user token for validation
+ * @param model the model
+ * @return ResponseEntity<String> with status depending on success or failure
+ */
+        /*@PostMapping("/products")
+        public ResponseEntity<String> addProduct(@ModelAttribute Product product, @RequestHeader("Authorization") String token, Model model) {
+            // TODO: user authentication
+            if (product != null) {
+                // extract user from product
+                User user = userService.getUser(product.getSellerId());
+
+                // split user token to get rid of "Bearer"
+                String userToken = token.split(" ")[1];
+
+                // authenticate the user, if it token valid add product to db
+                if (tokenService.validateToken(userToken, user)) {
+                    // save the product to the database
+                    productService.uploadProduct(product);
+                    // return successful upload of product
+                    return ResponseEntity.ok().body("upload_success");
+                } else {
+                    // send ResponseEntity unauthorized the client side knows what to do
+                    return ResponseEntity.status(401).body("upload_failed_unauthorized");
+                }
+
+            } else {
+                // send ResponseEntity 400 bad request
+                return ResponseEntity.badRequest().body("upload_failed_product_null");
+            }
+
+        } */
+
+
+
+
